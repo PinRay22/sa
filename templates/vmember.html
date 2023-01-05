@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="../static/css/basic.css">
+    <title>會員專區</title>
+</head>
+
+<body>
+    <!--header-->
+    <!--上方標題欄-->
+    <nav class="navbar bg-info position-fixed top-0 nav_width" aria-label="Light offcanvas navbar" id="nav_bg"
+        style="z-index: 10000;">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasNavbarLight" aria-controls="offcanvasNavbarLight">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="black" class="bi bi-gear-fill"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z" />
+                </svg>
+            </button>
+            <div class="offcanvas offcanvas-start" style="width: 65%;" tabindex="-1" id="offcanvasNavbarLight"
+                aria-labelledby="offcanvasNavbarLightLabel">
+                <div class="offcanvas-header">
+                    <h3 class="offcanvas-title" id="offcanvasNavbarLightLabel">設定</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <!--側邊滑出欄-->
+                <div class="offcanvas-body">
+                    <div class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <button class="nav-item" data-bs-toggle="modal" data-bs-target="#aboutModal">
+                            關於
+                        </button>
+                        <button class="nav-item" id="same_row">
+                            <span>系統通知</span>
+                            <span class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+                            </span>
+                        </button>
+                        <button class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false" style="text-align: left; margin: 0;">
+                                語言
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="index.html">繁體中文</a></li>
+                                <li><a class="dropdown-item" href="index_en.html">English</a></li>
+                                <li><a class="dropdown-item" href="index_jp.html">日本語</a></li>
+                            </ul>
+                        </button>
+                        <button class="nav-item" data-bs-toggle="modal" data-bs-target="#verModal">
+                            版本資訊
+                        </button>
+                        <button class="nav-item" data-bs-toggle="modal" data-bs-target="#csModal">
+                            客服專區
+                        </button>
+                        <button class="nav-item" data-bs-toggle="modal" data-bs-target="#ppModal">
+                            隱私權條款
+                        </button>
+                        <form action="/logout/" method = "POST">{% csrf_token %}
+                            <input type="submit" class="nav-item" value="登出"></input>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <p class="navbar-brand t_fontsize">碳制郎</p>
+            
+            <!--登入後-->
+            {% if san != 0 %}
+            <a class="btn_mem" href="/vmember/" role="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="black" class="bi bi-person-circle"
+                    viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                    <path fill-rule="evenodd"
+                        d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                </svg>
+            </a>
+            {% else %}
+            <!--未登入前-->
+            <a class="btn" style="padding:auto; height:50px; border:1px solid black;" href="/login/" role="button">
+                測試用<br>(登入註冊)
+            </a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <!--燈箱-->
+    <!--關於-->
+    <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="aboutModalLabel">關於</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4 id="about_title">關於碳制郎</h4>
+                    <h5>用於</h5>
+                    <hr class="about_hr">
+                    <h4 id="about_title">關於我們</h4>
+                    <div class="about_mem">
+                        <h5 class="about_name">10944204 林庭妤</h5>
+                        <div class="about_img">
+                            <img decoding="async" src="../static/img/lin.jpg" class="aboutimg-circle">
+                        </div>
+                    </div>
+                    <div class="about_mem">
+                        <h5 class="about_name">10944205 吳孟軒</h5>
+                        <div class="about_img">
+                            <img decoding="async" src="../static/img/wu.jpg" class="aboutimg-circle">
+                        </div>
+                    </div>
+                    <div class="about_mem">
+                        <h5 class="about_name">10944206 王靖淳</h5>
+                        <div class="about_img">
+                            <img decoding="async" src="../static/img/cchun.JPG" class="aboutimg-circle">
+                        </div>
+                    </div>
+                    <div class="about_mem">
+                        <h5 class="about_name">10944250 陳品叡</h5>
+                        <div class="about_img">
+                            <img decoding="async" src="../static/img/chen.jpg" class="aboutimg-circle">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">關閉</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--版本資訊-->
+    <div class="modal fade" id="verModal" tabindex="-1" aria-labelledby="verModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="verModalLabel">版本資訊</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h5>1.0.0</h5>
+                    <h5>2022.12.26更新</h5>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">關閉</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--客服-->
+    <div class="modal fade" id="csModal" tabindex="-1" aria-labelledby="csModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="csModalLabel">客服專區</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="cs_title" class="col-form-label">主旨:</label>
+                            <input type="text" class="form-control" id="cs_title">
+                        </div>
+                        <div class="mb-3">
+                            <label for="message-text" class="col-form-label">內文:</label>
+                            <textarea class="form-control" id="message-text"></textarea>
+                        </div>
+                        <div class="d-grid gap-2 col-6 mx-auto">
+                            <input type="submit" class="btn btn-primary" value="提交">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--隱私權-->
+    <div class="modal fade" id="ppModal" tabindex="-1" aria-labelledby="ppModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="ppModalLabel">隱私權條款</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    非常歡迎您光臨碳制郎（以下簡稱本APP），為了讓您能夠安心的使用本APP的各項服務與資訊，特此向您說明本APP的隱私權保護政策，以保障您的權益，請您詳閱下列內容：</br>
+                    一、隱私權保護政策的適用範圍</br>
+                    隱私權保護政策內容，包括本APP如何處理在您使用APP服務時收集到的個人識別資料。隱私權保護政策不適用於本APP以外的相關連結APP，也不適用於非本APP所委託或參與管理的人員。</br>
+                    二、個人資料的蒐集、處理及利用方式</br>
+                    •
+                    當您造訪本APP或使用本APP所提供之功能服務時，我們將視該服務功能性質，請您提供必要的個人資料，並在該特定目的範圍內處理及利用您的個人資料；非經您書面同意，本APP不會將個人資料用於其他用途。</br>
+                    • 本APP在您使用服務信箱、問卷調查等互動性功能時，會保留您所提供的姓名、電子郵件地址、聯絡方式及使用時間等。</br>
+                    • 於一般瀏覽時，伺服器會自行記錄相關行徑，包括您使用連線設備的 IP
+                    位址、使用時間、使用的瀏覽器、瀏覽及點選資料記錄等，做為我們增進APP服務的參考依據，此記錄為內部應用，決不對外公佈。</br>
+                    • 為提供精確的服務，我們會將收集的問卷調查內容進行統計與分析，分析結果之統計數據或說明文字呈現，除供內部研究外，我們會視需要公佈統計數據及說明文字，但不涉及特定個人之資料。</br>
+                    • 您可以隨時向我們提出請求，以更正或刪除本APP所蒐集您錯誤或不完整的個人資料。</br>
+                    三、資料之保護</br>
+                    •本APP主機均設有防火牆、防毒系統等相關的各項資訊安全設備及必要的安全防護措施，加以保護APP及您的個人資料採用嚴格的保護措施，只由經過授權的人員才能接觸您的個人資料，相關處理人員皆簽有保密合約，如有違反保密義務者，將會受到相關的法律處分。</br>
+                    • 如因業務需要有必要委託其他單位提供服務時，本APP亦會嚴格要求其遵守保密義務，並且採取必要檢查程序以確定其將確實遵守。</br>
+                    四、APP對外的相關連結</br>
+                    本APP的網頁提供其他APP的網路連結，您也可經由本APP所提供的連結，點選進入其他APP。但該連結APP不適用本APP的隱私權保護政策，您必須參考該連結APP中的隱私權保護政策。</br>
+                    五、與第三人共用個人資料之政策</br>
+                    本APP絕不會提供、交換、出租或出售任何您的個人資料給其他個人、團體、私人企業或公務機關，但有法律依據或合約義務者，不在此限。</br>
+                    前項但書之情形包括不限於：</br>
+                    • 經由您書面同意。</br>
+                    • 法律明文規定。</br>
+                    • 為免除您生命、身體、自由或財產上之危險。</br>
+                    • 與公務機關或學術研究機構合作，基於公共利益為統計或學術研究而有必要，且資料經過提供者處理或蒐集者依其揭露方式無從識別特定之當事人。</br>
+                    • 當您在APP的行為，違反服務條款或可能損害或妨礙APP與其他使用者權益或導致任何人遭受損害時，經APP管理單位研析揭露您的個人資料是為了辨識、聯絡或採取法律行動所必要者。</br>
+                    • 有利於您的權益。</br>
+                    • 本APP委託廠商協助蒐集、處理或利用您的個人資料時，將對委外廠商或個人善盡監督管理之責。</br>
+                    六、Cookie 之使用</br>
+                    為了提供您最佳的服務，本APP會在您的電腦中放置並取用我們的 Cookie，若您不願接受 Cookie 的寫入，您可在您使用的瀏覽器功能項中設定隱私權等級為高，即可拒絕 Cookie</br>
+                    的寫入，但可能會導致APP某些功能無法正常執行 。</br>
+                    七、隱私權保護政策之修正</br>
+                    本APP隱私權保護政策將因應需求隨時進行修正，修正後的條款將刊登於APP上。</br>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">關閉</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--header end-->
+    <div class="main_body">
+        <div class="mid_body">
+            <h3 class="modal-title">會員專區</h3>
+            <div>
+                <div class="mem_img">
+                    <img decoding="async" src="../static/img/kamado.jpg" class="img-circle">
+                </div>
+                <h4><b>會員基本資料</b></h4>
+                <h5>身份證字號: {{Mem_sanfan}}</h5>
+                <h5>姓名: {{Mem_name}}</h5>
+                <h5>手機號碼: {{Mem_phone}}</h5>
+                <h5>地址: {{Mem_address}}</h5>
+                <h5>電子信箱: {{Mem_mail}}</h5>
+                <h5>信用卡卡號：{{Mem_xin}}</h5>
+                <h5>密碼: {{Mem_password}}</h5>
+                <h5>碳制郎點數: 1000</h5>
+            </div>
+            <div class="d-grid gap-2">
+                <a class="btn btn-primary" href="/alt_view/">修改會員資料</a>
+            </div>
+        </div>
+    </div>
+    <!--底部-->
+    <nav class="nav position-fixed bottom-0 bg-secondary nav_width" aria-label="Secondary navigation"
+        style="background-color: #c9ad8e !important; height: 120px;">
+        <a class="nav-link b_nav_w" aria-current="page" href="point.html">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-p-circle"
+                viewBox="0 0 16 16">
+                <path
+                    d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8Zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM5.5 4.002h2.962C10.045 4.002 11 5.104 11 6.586c0 1.494-.967 2.578-2.55 2.578H6.784V12H5.5V4.002Zm2.77 4.072c.893 0 1.419-.545 1.419-1.488s-.526-1.482-1.42-1.482H6.778v2.97H8.27Z" />
+            </svg>
+            <div>
+                <p class="b_nav_t">點數資訊</p>
+            </div>
+        </a>
+        <a class="nav-link b_nav_w" href="comp.html">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-shop"
+                viewBox="0 0 16 16">
+                <path
+                    d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z" />
+            </svg>
+            <div>
+                <p class="b_nav_t">合作廠商</p>
+            </div>
+        </a>
+        <a class="nav-link b_nav_w" href="index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-house-door"
+                viewBox="0 0 16 16">
+                <path
+                    d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146ZM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5Z" />
+            </svg>
+            <div>
+                <p class="b_nav_t">首頁</p>
+            </div>
+        </a>
+        <a class="nav-link b_nav_w" href="rank.html">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor"
+                class="bi bi-bar-chart-line" viewBox="0 0 16 16">
+                <path
+                    d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2zm1 12h2V2h-2v12zm-3 0V7H7v7h2zm-5 0v-3H2v3h2z" />
+            </svg>
+            <div>
+                <p class="b_nav_t">碳排排名</p>
+            </div>
+        </a>
+        <a class="nav-link b_nav_w" href="record.html">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-card-list"
+                viewBox="0 0 16 16">
+                <path
+                    d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
+                <path
+                    d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
+            </svg>
+            <div>
+                <p class="b_nav_t">消費紀錄</p>
+            </div>
+        </a>
+    </nav>
+</body>
+
+</html>
