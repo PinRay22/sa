@@ -228,11 +228,11 @@
             <form action="/login_p/" method = "POST">{% csrf_token %}
                 <div class="mb-3">
                     <label for="login_id" class="col-form-label">請輸入身份證字號:</label>
-                    <input type="text" class="form-control" id="login_id" name = "san" >
+                    <input type="text" class="form-control" id="login_id" name = "san" required>
                 </div>
                 <div class="mb-3">
                     <label for="login_psd" class="col-form-label">請輸入密碼:</label>
-                    <input type="text" class="form-control" id="login_psd" name = "password" >
+                    <input type="password" class="form-control" id="login_psd" name = "password" required>
                 </div>
                 <div class="d-grid gap-2 col-6 mx-auto">
                     <input type="submit" class="btn btn-primary" value="登入">
