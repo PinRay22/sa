@@ -12,8 +12,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
     </script>
-    <link rel="stylesheet" href="asset/css/index.css">
-    <link rel="stylesheet" href="asset/css/basic.css">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="../static/css/basic.css">
     <title>首頁</title>
 </head>
 
@@ -78,12 +78,6 @@
                 </div>
             </div>
             <p class="navbar-brand t_fontsize">碳制郎</p>
-            <!--未登入前-->
-            <button class="btn" style="padding:auto; height:50px; border:1px solid black;" data-bs-toggle="modal"
-                data-bs-target="#loginModal">
-                <p style="font-size: 5px;">測試用<br>(登入註冊)</br>
-            </button>
-            <!--登入後-->
             <button class="btn_mem" data-bs-toggle="modal" data-bs-target="#memModal">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="black" class="bi bi-person-circle"
                     viewBox="0 0 16 16">
@@ -213,7 +207,7 @@
                 <div class="modal-body">
                     <div>
                         <div class="mem_img">
-                            <img decoding="async" src="asset/img/kamado.jpg" class="img-circle">
+                            <img decoding="async" src="../static/img/kamado.jpg" class="img-circle">
                         </div>
                         <h4><b>會員基本資料</b></h4>
                         <h5>身份證字號: A123456789</h5>
@@ -304,25 +298,25 @@
                     <div class="about_mem">
                         <h5 class="about_name">10944204 林庭妤</h5>
                         <div class="about_img">
-                            <img decoding="async" src="asset/img/lin.jpg" class="aboutimg-circle">
+                            <img decoding="async" src="../static/img/lin.jpg" class="aboutimg-circle">
                         </div>
                     </div>
                     <div class="about_mem">
                         <h5 class="about_name">10944205 吳孟軒</h5>
                         <div class="about_img">
-                            <img decoding="async" src="asset/img/wu.jpg" class="aboutimg-circle">
+                            <img decoding="async" src="../static/img/wu.jpg" class="aboutimg-circle">
                         </div>
                     </div>
                     <div class="about_mem">
                         <h5 class="about_name">10944206 王靖淳</h5>
                         <div class="about_img">
-                            <img decoding="async" src="asset/img/cchun.JPG" class="aboutimg-circle">
+                            <img decoding="async" src="../static/img/cchun.JPG" class="aboutimg-circle">
                         </div>
                     </div>
                     <div class="about_mem">
                         <h5 class="about_name">10944250 陳品叡</h5>
                         <div class="about_img">
-                            <img decoding="async" src="asset/img/chen.jpg" class="aboutimg-circle">
+                            <img decoding="async" src="../static/img/chen.jpg" class="aboutimg-circle">
                         </div>
                     </div>
                 </div>
@@ -431,26 +425,26 @@
         <!--廠商-->
         <div class="tab-pane main_body comp_bg" id="pills-comp" role="tabpanel" aria-labelledby="pills-comp-tab">
             <div class="comp_btn_group">
-                <a class="btn comp_btn" href="#" role="button"><img src="asset/img/wash_comp.jpg" alt="...">
+                <a class="btn comp_btn" href="#" role="button"><img src="../static/img/wash_comp.jpg" alt="...">
                     <p>AI智慧洗</p>
                 </a>
-                <a class="btn comp_btn" href="#" role="button"><img src="asset/img/food_comp.jpg" alt="...">
+                <a class="btn comp_btn" href="#" role="button"><img src="../static/img/food_comp.jpg" alt="...">
                     <p>低碳FOOD</p>
                 </a>
             </div>
             <div class="comp_btn_group">
-                <a class="btn comp_btn" href="#" role="button"><img src="asset/img/clean_comp.jpg" alt="...">
+                <a class="btn comp_btn" href="#" role="button"><img src="../static/img/clean_comp.jpg" alt="...">
                     <p>AI智慧清潔</p>
                 </a>
-                <a class="btn comp_btn" href="#" role="button"><img src="asset/img/shop_comp.jpg" alt="...">
+                <a class="btn comp_btn" href="#" role="button"><img src="../static/img/shop_comp.jpg" alt="...">
                     <p>低碳SHOPPING</p>
                 </a>
             </div>
             <div class="comp_btn_group">
-                <a class="btn comp_btn" href="#" role="button"><img src="asset/img/tvl_comp.jpg" alt="...">
+                <a class="btn comp_btn" href="#" role="button"><img src="../static/img/tvl_comp.jpg" alt="...">
                     <p>低碳TRAVEL</p>
                 </a>
-                <a class="btn comp_btn" href="#" role="button"><img src="asset/img/act_comp.jpg" alt="...">
+                <a class="btn comp_btn" href="#" role="button"><img src="../static/img/act_comp.jpg" alt="...">
                     <p>揪愛低碳生活</p>
                 </a>
             </div>
@@ -459,7 +453,7 @@
     <!--底部-->
     <nav class="nav position-fixed bottom-0 bg-secondary nav_width" aria-label="Secondary navigation"
         style="background-color: #c9ad8e !important; height: 120px;">
-        <a class="nav-link b_nav_w" aria-current="page" href="point.html">
+        <a class="nav-link b_nav_w" aria-current="page" href="/point_view/">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-p-circle"
                 viewBox="0 0 16 16">
                 <path
@@ -469,7 +463,7 @@
                 <p class="b_nav_t">點數資訊</p>
             </div>
         </a>
-        <a class="nav-link active b_nav_w" href="comp.html">
+        <a class="nav-link active b_nav_w" href="/comp_view/">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-shop"
                 viewBox="0 0 16 16">
                 <path
@@ -479,7 +473,7 @@
                 <p class="b_nav_t">合作廠商</p>
             </div>
         </a>
-        <a class="nav-link b_nav_w" href="index.html">
+        <a class="nav-link b_nav_w" href="/index/">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-house-door"
                 viewBox="0 0 16 16">
                 <path
@@ -489,7 +483,7 @@
                 <p class="b_nav_t">首頁</p>
             </div>
         </a>
-        <a class="nav-link b_nav_w" href="rank.html">
+        <a class="nav-link b_nav_w" href="/rank/">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor"
                 class="bi bi-bar-chart-line" viewBox="0 0 16 16">
                 <path
@@ -499,7 +493,7 @@
                 <p class="b_nav_t">碳排排名</p>
             </div>
         </a>
-        <a class="nav-link b_nav_w" href="record.html">
+        <a class="nav-link b_nav_w" href="/record_view/">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-card-list"
                 viewBox="0 0 16 16">
                 <path

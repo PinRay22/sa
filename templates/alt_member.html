@@ -79,12 +79,7 @@
                 </div>
             </div>
             <p class="navbar-brand t_fontsize">碳制郎</p>
-            <!--未登入前-->
-            <a class="btn" style="padding:auto; height:50px; border:1px solid black;" href="login.html" role="button">
-                測試用<br>(登入註冊)
-            </a>
-            <!--登入後-->
-            <a class="btn_mem" href="member.html" role="button">
+            <a class="btn_mem" href="/vmember/" role="button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="black" class="bi bi-person-circle"
                     viewBox="0 0 16 16">
                     <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
@@ -241,31 +236,31 @@
             <form action="/alt_member/" method = "POST">{% csrf_token %}
                 <div class="mb-3">
                     <label for="alt_id" class="col-form-label">修改身份證字號:</label>
-                    <input type="text" class="form-control" id="alt_id" value="A123456789" disabled name = 'san' >
+                    <input type="text" class="form-control" id="alt_id" value="" disabled name = 'san' >
                 </div>
                 <div class="mb-3">
                     <label for="alt_name" class="col-form-label">修改姓名:</label>
-                    <input type="text" class="form-control" id="alt_name" value="王大明" name = 'name' >
+                    <input type="text" class="form-control" id="alt_name" value="王大明" name = 'name' required>
                 </div>
                 <div class="mb-3">
                     <label for="alt_ph" class="col-form-label">修改手機號碼:</label>
-                    <input type="text" class="form-control" id="alt_ph" value="0987654321" name = 'phone' >
+                    <input type="text" class="form-control" id="alt_ph" value="0987654321" name = 'phone' required>
                 </div>
                 <div class="mb-3">
                     <label for="alt_adr" class="col-form-label">修改地址:</label>
-                    <input type="text" class="form-control" id="alt_adr" value="台北市XX區XX路X號" name = 'address' >
+                    <input type="text" class="form-control" id="alt_adr" value="台北市XX區XX路X號" name = 'address' required >
                 </div>
                 <div class="mb-3">
                     <label for="alt_mail" class="col-form-label">修改電子信箱:</label>
-                    <input type="text" class="form-control" id="alt_mail" value="daming@gmail.com" name = 'mail' >
+                    <input type="text" class="form-control" id="alt_mail" value="daming@gmail.com" name = 'mail' required >
                 </div>
                 <div class="mb-3">
                     <label for="alt_card" class="col-form-label">修改信用卡卡號:</label>
-                    <input type="text" class="form-control" id="alt_card" value="0000-1111-2222-3333" name = 'xin' >
+                    <input type="text" class="form-control" id="alt_card" value="0000-1111-2222-3333" name = 'xin' required >
                 </div>
                 <div class="mb-3">
                     <label for="alt_psd" class="col-form-label">修改密碼:</label>
-                    <input type="text" class="form-control" id="alt_psd" value="00000000" name = 'password' >
+                    <input type="text" class="form-control" id="alt_psd" value="00000000" name = 'password' required  >
                 </div>
                 <div class="d-grid gap-2 col-6 mx-auto">
                     <input type="submit" class="btn btn-primary" value="確認修改">
@@ -276,6 +271,7 @@
             </div>
         </div>
     </div>
+    
     <!--修改會員資料-->
     <div class="modal fade" id="altmemModal" aria-hidden="true" aria-labelledby="altmemModalLabel" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
@@ -289,7 +285,7 @@
                     <form action="">
                         <div class="mb-3">
                             <label for="alt_id" class="col-form-label">修改身份證字號:</label>
-                            <input type="text" class="form-control" id="alt_id" value="A123456789" disabled>
+                            <input type="text" class="form-control" id="alt_id" value= "{{ name }}" disabled>
                         </div>
                         <div class="mb-3">
                             <label for="alt_name" class="col-form-label">修改姓名:</label>
@@ -332,7 +328,7 @@
     <!--底部-->
     <nav class="nav position-fixed bottom-0 bg-secondary nav_width" aria-label="Secondary navigation"
         style="background-color: #c9ad8e !important; height: 120px;">
-        <a class="nav-link b_nav_w" aria-current="page" href="point.html">
+        <a class="nav-link b_nav_w" aria-current="page" href="/point_view/">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-p-circle"
                 viewBox="0 0 16 16">
                 <path
@@ -342,7 +338,7 @@
                 <p class="b_nav_t">點數資訊</p>
             </div>
         </a>
-        <a class="nav-link b_nav_w" href="comp.html">
+        <a class="nav-link b_nav_w" href="/comp_view/">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-shop"
                 viewBox="0 0 16 16">
                 <path
@@ -352,7 +348,7 @@
                 <p class="b_nav_t">合作廠商</p>
             </div>
         </a>
-        <a class="nav-link b_nav_w" href="index.html">
+        <a class="nav-link b_nav_w" href="/index/">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-house-door"
                 viewBox="0 0 16 16">
                 <path
@@ -362,7 +358,7 @@
                 <p class="b_nav_t">首頁</p>
             </div>
         </a>
-        <a class="nav-link b_nav_w" href="rank.html">
+        <a class="nav-link b_nav_w" href="/rank/">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor"
                 class="bi bi-bar-chart-line" viewBox="0 0 16 16">
                 <path
@@ -372,7 +368,7 @@
                 <p class="b_nav_t">碳排排名</p>
             </div>
         </a>
-        <a class="nav-link b_nav_w" href="record.html">
+        <a class="nav-link b_nav_w" href="/record_view/">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-card-list"
                 viewBox="0 0 16 16">
                 <path

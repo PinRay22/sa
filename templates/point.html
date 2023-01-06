@@ -12,8 +12,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
     </script>
-    <link rel="stylesheet" href="asset/css/index.css">
-    <link rel="stylesheet" href="asset/css/basic.css">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="../static/css/basic.css">
     <title>首頁</title>
 </head>
 
@@ -78,20 +78,14 @@
                 </div>
             </div>
             <p class="navbar-brand t_fontsize">碳制郎</p>
-            <!--未登入前-->
-            <button class="btn" style="padding:auto; height:50px; border:1px solid black;" data-bs-toggle="modal"
-                data-bs-target="#loginModal">
-                <p style="font-size: 5px;">測試用<br>(登入註冊)</br>
-            </button>
-            <!--登入後-->
-            <button class="btn_mem" data-bs-toggle="modal" data-bs-target="#memModal">
+            <a class="btn_mem" href="/vmember/" role="button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="black" class="bi bi-person-circle"
                     viewBox="0 0 16 16">
                     <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
                     <path fill-rule="evenodd"
                         d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
                 </svg>
-            </button>
+            </a>
         </div>
     </nav>
     <!--燈箱-->
@@ -212,7 +206,7 @@
                 <div class="modal-body">
                     <div>
                         <div class="mem_img">
-                            <img decoding="async" src="asset/img/kamado.jpg" class="img-circle">
+                            <img decoding="async" src="../static/img/kamado.jpg" class="img-circle">
                         </div>
                         <h4><b>會員基本資料</b></h4>
                         <h5>身份證字號: A123456789</h5>
@@ -303,25 +297,25 @@
                     <div class="about_mem">
                         <h5 class="about_name">10944204 林庭妤</h5>
                         <div class="about_img">
-                            <img decoding="async" src="asset/img/lin.jpg" class="aboutimg-circle">
+                            <img decoding="async" src="../static/img/lin.jpg" class="aboutimg-circle">
                         </div>
                     </div>
                     <div class="about_mem">
                         <h5 class="about_name">10944205 吳孟軒</h5>
                         <div class="about_img">
-                            <img decoding="async" src="asset/img/wu.jpg" class="aboutimg-circle">
+                            <img decoding="async" src="../static/img/wu.jpg" class="aboutimg-circle">
                         </div>
                     </div>
                     <div class="about_mem">
                         <h5 class="about_name">10944206 王靖淳</h5>
                         <div class="about_img">
-                            <img decoding="async" src="asset/img/cchun.JPG" class="aboutimg-circle">
+                            <img decoding="async" src="../static/img/cchun.JPG" class="aboutimg-circle">
                         </div>
                     </div>
                     <div class="about_mem">
                         <h5 class="about_name">10944250 陳品叡</h5>
                         <div class="about_img">
-                            <img decoding="async" src="asset/img/chen.jpg" class="aboutimg-circle">
+                            <img decoding="async" src="../static/img/chen.jpg" class="aboutimg-circle">
                         </div>
                     </div>
                 </div>
@@ -430,10 +424,10 @@
         <div class="tab-pane main_body point_bg" id="pills-point" role="tabpanel" aria-labelledby="pills-point-tab">
             <div class="pnt_inf">
                 <p class="pnt_inf_t">累積點數</p>
-                <p class="pnt_inf_n">888888</p>
+                <p class="pnt_inf_n">{{item.MemPoint}}</p>
                 <div class="break_r"></div>
                 <p class="pnt_inf_t">即將到期</p>
-                <p class="pnt_inf_n">400000</p>
+                <p class="pnt_inf_n">40</p>
                 <p style="font-size: 8;">~2023/01/31</p>
             </div>
             <div class="btn_wrap">
@@ -457,15 +451,16 @@
                             data-bs-target="#collapsefood" aria-expanded="false" aria-controls="collapsefood">
                             食
                         </button>
-
+                        
                         <div class="collapse clps" id="collapsefood">
                             <div class="card card-body" style="padding:5px 0;">
-                                <form action="" data-bs-toggle="modal" data-bs-target="#pntexcModal">
+                                {% for ser in ser1 %}
+                                <form action="/exchange/" data-bs-toggle="modal" data-bs-target="#pntexcModal">
                                     <div class="voucher">
                                         <div>
-                                            <p class="v_title">可食用牛肉500g</p>
-                                            <p class="v_price">所需點數:800</p>
-                                            <p class=" v_dtl">使用期限:兌換後一個月內</p>
+                                            <p class="v_title">{{ser.Sname}}</p>
+                                            <p class="v_price">所需點數:{{ser.SPoint}}</p>
+                                            <p class=" v_dtl">使用期限:兌換後{{ser.SDDline}}日內</p>
                                         </div>
                                         <div class="wrap_pexc">
                                             <input type="submit" class="btn btn-primary pnt_exchange"
@@ -473,6 +468,7 @@
                                         </div>
                                     </div>
                                 </form>
+                                {% endfor %}
                             </div>
                         </div>
                         <button class="btn btn_type" type="button" data-bs-toggle="collapse"
@@ -482,12 +478,13 @@
 
                         <div class="collapse clps" id="collapseclo">
                             <div class="card card-body">
-                                <form action="" data-bs-toggle="modal" data-bs-target="#pntexcModal">
+                                {% for ser in ser2 %}
+                                <form action="/exchange/" data-bs-toggle="modal" data-bs-target="#pntexcModal">
                                     <div class="voucher">
                                         <div>
-                                            <p class="v_title">可購買新衣服1.5kg</p>
-                                            <p class="v_price">所需點數:1500</p>
-                                            <p class=" v_dtl">使用期限:兌換後一個月內</p>
+                                            <p class="v_title">{{ser.Sname}}</p>
+                                            <p class="v_price">{{ser.SPoint}}</p>
+                                            <p class=" v_dtl">使用期限:兌換後{{ser.SDDline}}日內</p>
                                         </div>
                                         <div class="wrap_pexc">
                                             <input type="submit" class="btn btn-primary pnt_exchange"
@@ -495,6 +492,7 @@
                                         </div>
                                     </div>
                                 </form>
+                                {% endfor %}
                             </div>
                         </div>
                         <button class="btn btn_type" type="button" data-bs-toggle="collapse"
@@ -504,12 +502,13 @@
 
                         <div class="collapse clps" id="collapselive">
                             <div class="card card-body">
-                                <form action="" data-bs-toggle="modal" data-bs-target="#pntexcModal">
+                                {% for ser in ser3 %}
+                                <form action="/exchange/" data-bs-toggle="modal" data-bs-target="#pntexcModal">
                                     <div class="voucher">
                                         <div>
-                                            <p class="v_title">吹冷氣1hr</p>
-                                            <p class="v_price">所需點數:2500</p>
-                                            <p class=" v_dtl">使用期限:兌換後一個月內</p>
+                                            <p class="v_title">{{ser.Sname}}</p>
+                                            <p class="v_price">{{ser.SPoint}}</p>
+                                            <p class=" v_dtl">使用期限:兌換後{{ser.SDDline}}日內</p>
                                         </div>
                                         <div class="wrap_pexc">
                                             <input type="submit" class="btn btn-primary pnt_exchange"
@@ -517,6 +516,7 @@
                                         </div>
                                     </div>
                                 </form>
+                                {% endfor %}
                             </div>
                         </div>
                         <button class="btn btn_type" type="button" data-bs-toggle="collapse"
@@ -526,12 +526,13 @@
 
                         <div class="collapse clps" id="collapsetrans">
                             <div class="card card-body">
-                                <form action="" data-bs-toggle="modal" data-bs-target="#pntexcModal">
+                                {% for ser in ser4 %}
+                                <form action="/exchange/" data-bs-toggle="modal" data-bs-target="#pntexcModal">
                                     <div class="voucher">
                                         <div>
-                                            <p class="v_title">行駛自家車200km</p>
-                                            <p class="v_price">所需點數:120~5000</p>
-                                            <p class=" v_dtl">使用期限:兌換後一個月內</p>
+                                            <p class="v_title">{{ser.Sname}}</p>
+                                            <p class="v_price">{{ser.SPoint}}</p>
+                                            <p class=" v_dtl">使用期限:兌換後{{ser.SDDline}}日內</p>
                                         </div>
                                         <div class="wrap_pexc">
                                             <input type="submit" class="btn btn-primary pnt_exchange"
@@ -539,6 +540,7 @@
                                         </div>
                                     </div>
                                 </form>
+                                {% endfor %}
                             </div>
                         </div>
                         <button class="btn btn_type" type="button" data-bs-toggle="collapse"
@@ -548,12 +550,13 @@
 
                         <div class="collapse clps" id="collapseedu">
                             <div class="card card-body">
-                                <form action="" data-bs-toggle="modal" data-bs-target="#pntexcModal">
+                                {% for ser in ser5 %}
+                                <form action="/exchange/" data-bs-toggle="modal" data-bs-target="#pntexcModal">
                                     <div class="voucher">
                                         <div>
-                                            <p class="v_title">觀看NETFLIX 1hr</p>
-                                            <p class="v_price">所需點數:300~500</p>
-                                            <p class=" v_dtl">使用期限:兌換後一個月內</p>
+                                            <p class="v_title">{{ser.Sname}}</p>
+                                            <p class="v_price">{{ser.SPoint}}</p>
+                                            <p class=" v_dtl">使用期限:兌換後{{ser.SDDline}}日內</p>
                                         </div>
                                         <div class="wrap_pexc">
                                             <input type="submit" class="btn btn-primary pnt_exchange"
@@ -561,32 +564,24 @@
                                         </div>
                                     </div>
                                 </form>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="pnt_svc" role="tabpanel" aria-labelledby="pnt_svc-tab">
+                        {% for ex in exs %}
                         <form action="" data-bs-toggle="modal" data-bs-target="#pntuseModal">
                             <div class="voucher">
                                 <div>
-                                    <p class="v_title">觀看NETFLIX 1hr</p>
-                                    <p class=" v_dtl">使用期限:2023/1/31</p>
+                                    <p class="v_title">{{ex.Ename}}</p>
+                                    <p class=" v_dtl">使用期限:剩餘{{ex.EDDline}}日</p>
                                 </div>
                                 <div class="wrap_pexc">
                                     <input type="submit" class="btn btn-primary pnt_exchange" value="使用"></input>
                                 </div>
                             </div>
                         </form>
-                        <form action="" data-bs-toggle="modal" data-bs-target="#pntuseModal">
-                            <div class="voucher">
-                                <div>
-                                    <p class="v_title">吹冷氣1hr</p>
-                                    <p class=" v_dtl">使用期限:2023/2/10</p>
-                                </div>
-                                <div class="wrap_pexc">
-                                    <input type="submit" class="btn btn-primary pnt_exchange" value="使用"></input>
-                                </div>
-                            </div>
-                        </form>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -602,22 +597,18 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    {% for user in users %}
                     <form>
                         <div>
-                            <p>日期：2022/12/31</p>
-                            <p>點數增減：+100</p>
-                            <p>說明：使用智慧洗</p>
+                            <p>日期：{{user.PDATE}}</p>
+                            <p>點數增減：{{user.PChange}}{{user.PPoint}}</p>
+                            <p>說明：{{user.PPS}}</p>
                         </div>
                         <hr>
                     </form>
-                    <form>
-                        <div>
-                            <p>日期：2022/12/31</p>
-                            <p>點數增減：+100</p>
-                            <p>說明：使用智慧洗</p>
-                        </div>
-                        <hr>
-                    </form>
+                
+                    {% endfor %}
+            
                 </div>
             </div>
         </div>
@@ -671,7 +662,7 @@
     <!--底部-->
     <nav class="nav position-fixed bottom-0 bg-secondary nav_width" aria-label="Secondary navigation"
         style="background-color: #c9ad8e !important; height: 120px;">
-        <a class="nav-link active b_nav_w" aria-current="page" href="point.html">
+        <a class="nav-link active b_nav_w" aria-current="page" href="/point_view/">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-p-circle"
                 viewBox="0 0 16 16">
                 <path
@@ -681,7 +672,7 @@
                 <p class="b_nav_t">點數資訊</p>
             </div>
         </a>
-        <a class="nav-link b_nav_w" href="comp.html">
+        <a class="nav-link b_nav_w" href="/comp_view/">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-shop"
                 viewBox="0 0 16 16">
                 <path
@@ -691,7 +682,7 @@
                 <p class="b_nav_t">合作廠商</p>
             </div>
         </a>
-        <a class="nav-link b_nav_w" href="index.html">
+        <a class="nav-link b_nav_w" href="/index/">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-house-door"
                 viewBox="0 0 16 16">
                 <path
@@ -701,7 +692,7 @@
                 <p class="b_nav_t">首頁</p>
             </div>
         </a>
-        <a class="nav-link b_nav_w" href="rank.html">
+        <a class="nav-link b_nav_w" href="/rank/">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor"
                 class="bi bi-bar-chart-line" viewBox="0 0 16 16">
                 <path
@@ -711,7 +702,7 @@
                 <p class="b_nav_t">碳排排名</p>
             </div>
         </a>
-        <a class="nav-link b_nav_w" href="record.html">
+        <a class="nav-link b_nav_w" href="/record_view/">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-card-list"
                 viewBox="0 0 16 16">
                 <path
@@ -724,6 +715,13 @@
             </div>
         </a>
     </nav>
+    {% if messages %}
+        <script>
+        {% for msg in messages %}
+            alert('{{ msg.message }}');
+        {% endfor %}
+        </script>
+        {% endif %}
 </body>
 
 </html>

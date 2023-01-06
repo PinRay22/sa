@@ -106,6 +106,7 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
     --bs-btn-active-border-color: #c9ad8e;
     --bs-btn-hover-bg: #c9ad8e;
     --bs-btn-hover-border-color: #c9ad8e;
+    margin-bottom: 10px;
 }
 /*下方欄*/
 .nav_width{
@@ -396,4 +397,12 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
 }
 #about_title{
     font-style: italic !important;
+}
+/*登入註冊*/
+.mid_body{
+    width: 90%;
+    background-color: #c9ad8e;
+    border-radius: 10px;
+    margin: 100px auto;
+    padding: 10px;
 }
