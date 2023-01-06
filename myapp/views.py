@@ -3,13 +3,52 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.urls import reverse
 from django.db.models import Count
 from django.contrib import auth,messages
+from datetime import datetime,timezone,timedelta
 from myapp.models import *
 from django.contrib.auth.models import User
 from systemanalyst import settings
 from django.template.loader import render_to_string
 from django.contrib.sessions.models import Session
+from jinja2 import Environment, FileSystemLoader
 
 
+def insert(request):
+    order.MemID = 1
+    order.Memsanfan = 1
+    order.Serv = '洗衣服'
+    order.SCarbon = 666
+    order.SPoint = 10
+    order.SDATE = 2023/1/6
+    order.save()
+    return render(request, 'index.html', locals())
+
+def point_view(request):
+    san=request.session.get('session_id')
+    if san != 0 and san is not None :
+        item = member.objects.get( Memsanfan = san )
+        users = point.objects.filter( Memsanfan = san )
+        ser1 = Service.objects.filter( SKind = 1 )
+        ser2 = Service.objects.filter( SKind = 2 )
+        ser3 = Service.objects.filter( SKind = 3 )
+        ser4 = Service.objects.filter( SKind = 4 )
+        ser5 = Service.objects.filter( SKind = 5 )
+        exs = Exchanged.objects.filter( Memsanfan = san )
+        return render(request, 'point.html', locals())
+    else:
+        messages.error(request, '您尚未登入，請先登入')
+        return HttpResponseRedirect("/login/")
+    
+
+def record_view(request):
+    san=request.session.get('session_id')
+    if san != 0 and san is not None :
+        items = order.objects.filter( Memsanfan = san )
+        #user = .objects.get(PHONE_NUMBER = user_phone)
+        #user_point = user.POINT
+        return render(request, 'record.html', locals())
+    else:
+        messages.error(request, '您尚未登入，請先登入')
+        return HttpResponseRedirect("/login/")
 
 
 def index(request): 
@@ -20,11 +59,32 @@ def index(request):
 def login_view(request):
     return render(request, 'login.html', locals())
 
+def rank_view(request):
+    return render(request, 'rank.html', locals())
+
+def comp_view(request):
+    return render(request, 'comp.html', locals())
+
 def logout(request): 
     request.session['session_id'] = 0
     messages.error(request, '你登出囉')  
     #return render(request, 'index.html', locals())
     return HttpResponseRedirect("/index/")
+
+def exchange(request):
+    san=request.session.get('session_id')
+    user = member.objects.get( Memsanfan = san )
+    point = user.MemPoint
+    SerName = request.POST.get("ser_name")
+    Ser = Exchanged.objects.get( Ename = SerName )
+    PointCost = Ser.EPoint 
+    if point < PointCost :
+        messages.error(request, '您的點數需大於兌換點數！')
+        return HttpResponseRedirect("/exchange/")
+    member.objects.filter( Memsanfan = san ).update( MemPoint = ( point - PointCost))
+    messages.error(request, '兌換成功')
+    return HttpResponseRedirect("/exchange/")
+    
 
 def member_view(request):
     san=request.session.get('session_id')
@@ -106,6 +166,17 @@ def signup_view(request):
     return render(request, 'signup.html', locals())
 
 def alt_view(request):
+    san=request.session.get('session_id')
+    print(san)
+    user = member.objects.get( Memsanfan = san )
+    Mem_sanfan = user.Memsanfan
+    Mem_name=user.MemName
+    Mem_phone=user.MemPh
+    Mem_password=user.MemPW
+    Mem_address=user.MemAddr
+    Mem_mail=user.Memmail
+    Mem_xin=user.Memxin
+    Mem_point=user.MemPoint
     return render(request, 'alt_member.html', locals())
 
 def alt_member(request):
