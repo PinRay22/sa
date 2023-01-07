@@ -19,10 +19,14 @@ from myapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.main),
+    path('acti_p/', views.acti_p),
     path('record_view/', views.record_view),
     path('point_view/', views.point_view),
+    path('cmphoto/', views.cmphoto),
+    path('vmem_photo/', views.vmem_photo),
+    path('pe_view/', views.pe_view),
     path('index/', views.index),
+    path('delete/', views.delete),
     path('exchange/', views.exchange),
     path('alt_view/', views.alt_view),
     path('rank/', views.rank_view),
