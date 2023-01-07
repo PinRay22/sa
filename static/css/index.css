@@ -181,6 +181,7 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
 .mem_imgs{
     width: 40%;
     height: 40%;
+    border-radius: 50%;
 }
 .mem_imgs>img{
     width: 100%;
@@ -190,6 +191,7 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
     opacity: 0;
     width: 0;
     height: 0;
+    border-radius: 50%;
 }
 [type=radio]:checked + img{
     outline:10px solid #b07577
