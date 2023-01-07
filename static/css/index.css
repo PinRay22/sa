@@ -108,6 +108,15 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
     --bs-btn-hover-border-color: #c9ad8e;
     margin-bottom: 10px;
 }
+#membtn{
+    --bs-btn-bg: #b07577;
+    --bs-btn-border-color: #b07577;
+    --bs-btn-active-bg: #c98e8e;
+    --bs-btn-active-border-color: #c98e8e;
+    --bs-btn-hover-bg: #c98e8e;
+    --bs-btn-hover-border-color: #c98e8e;
+    margin-bottom: 10px;
+}
 /*下方欄*/
 .nav_width{
     width: 100%;
@@ -183,7 +192,11 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
     height: 0;
 }
 [type=radio]:checked + img{
-    outline:10px solid #b09575
+    outline:10px solid #b07577
+}
+.check_exc_t{
+    text-align: center;
+    margin-top: 13px;
 }
 /*廠商*/
 .comp_btn_group{
@@ -300,12 +313,13 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
 }
 .btn_wrap{
     margin: 0px auto;
-    text-align: center;
+    text-align: center;    
 }
 .pnt_rec_btn{
     width: 90%;
     height: 60px;
     border-radius: 0 0 10px 10px;
+    font-size: 17px;
 }
 .break_r{
     height: 1px;
@@ -331,7 +345,7 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
     min-height: 300px;
 }
 .wrap_pnt{
-    background-color: #c9ad8e;
+    background-color:  #c9ad8e;
     width: 90%;
     border-radius: 10px;
     margin:auto;
@@ -339,7 +353,7 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
 }
 .btn_type{
     width: 100%;
-    background-color:#c9ad8e;
+    background-color: #c9ad8e;
     color: black;
     height: 50px;
     text-align: center;
@@ -471,7 +485,14 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
 /*登入註冊*/
 .mid_body{
     width: 90%;
-    background-color: #c9ad8e;
+    background-color: #c5b5b5;
+    border-radius: 10px;
+    margin: 100px auto;
+    padding: 10px;
+}
+.midmem_body{
+    width: 90%;
+    background-color: #c5b5b5;
     border-radius: 10px;
     margin: 100px auto;
     padding: 10px;
