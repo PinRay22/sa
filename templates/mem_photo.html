@@ -12,8 +12,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
     </script>
-    <link rel="stylesheet" href="asset/css/index.css">
-    <link rel="stylesheet" href="asset/css/basic.css">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="../static/css/basic.css">
     <title>點數兌換確認</title>
 </head>
 
@@ -109,25 +109,25 @@
                     <div class="about_mem">
                         <h5 class="about_name">10944204 林庭妤</h5>
                         <div class="about_img">
-                            <img decoding="async" src="asset/img/lin.jpg" class="aboutimg-circle">
+                            <img decoding="async" src="../static/img/lin.jpg" class="aboutimg-circle">
                         </div>
                     </div>
                     <div class="about_mem">
                         <h5 class="about_name">10944205 吳孟軒</h5>
                         <div class="about_img">
-                            <img decoding="async" src="asset/img/wu.jpg" class="aboutimg-circle">
+                            <img decoding="async" src="../static/img/wu.jpg" class="aboutimg-circle">
                         </div>
                     </div>
                     <div class="about_mem">
                         <h5 class="about_name">10944206 王靖淳</h5>
                         <div class="about_img">
-                            <img decoding="async" src="asset/img/cchun.JPG" class="aboutimg-circle">
+                            <img decoding="async" src="../static/img/cchun.JPG" class="aboutimg-circle">
                         </div>
                     </div>
                     <div class="about_mem">
                         <h5 class="about_name">10944250 陳品叡</h5>
                         <div class="about_img">
-                            <img decoding="async" src="asset/img/chen.jpg" class="aboutimg-circle">
+                            <img decoding="async" src="../static/img/chen.jpg" class="aboutimg-circle">
                         </div>
                     </div>
                 </div>
@@ -235,38 +235,38 @@
     <!--大頭貼-->
     <div class="main_body">
         <div class="mid_body">
-            <form action="">
+            <form action="/cmphoto/" method = "POST">{% csrf_token %}
                 <p class="check_exc_t">選擇欲使用之大頭貼</p>
                 <div>
                     <div class="mem_change_img">
                         <label class="mem_imgs">
-                            <input type="radio" name="btnradio">
-                            <img src="asset/img/mem_pic1.jpg" class="img-circle">
+                            <input type="radio" name="picnum" value = "../static/img/mem_pic1.jpg" >
+                            <img src="../static/img/mem_pic1.jpg" class="img-circle">
                         </label>
 
                         <label class="mem_imgs">
-                            <input type="radio" name="btnradio">
-                            <img src="asset/img/mem_pic2.jpg" class="img-circle">
+                            <input type="radio" name="picnum" value = "../static/img/mem_pic2.jpg">
+                            <img src="../static/img/mem_pic2.jpg" class="img-circle">
                         </label>
                     </div>
                     <div class="mem_change_img">
                         <label class="mem_imgs">
-                            <input type="radio" name="btnradio">
-                            <img src="asset/img/mem_pic3.jpg" class="img-circle">
+                            <input type="radio" name="picnum" value = "../static/img/mem_pic3.jpg">
+                            <img src="../static/img/mem_pic3.jpg" class="img-circle">
                         </label>
                         <label class="mem_imgs">
-                            <input type="radio" name="btnradio">
-                            <img src="asset/img/mem_pic4.jpg" class="img-circle">
+                            <input type="radio" name="picnum" value = "../static/img/mem_pic4.jpg">
+                            <img src="../static/img/mem_pic4.jpg" class="img-circle">
                         </label>
                     </div>
                     <div class="mem_change_img">
                         <label class="mem_imgs">
-                            <input type="radio" name="btnradio">
-                            <img src="asset/img/mem_pic5.jpg" class="img-circle">
+                            <input type="radio" name="picnum" value = "../static/img/mem_pic5.jpg">
+                            <img src="../static/img/mem_pic5.jpg" class="img-circle">
                         </label>
                         <label class="mem_imgs">
-                            <input type="radio" name="btnradio">
-                            <img src="asset/img/mem_pic6.jpg" class="img-circle">
+                            <input type="radio" name="picnum" value = "../static/img/mem_pic6.jpg">
+                            <img src="../static/img/mem_pic6.jpg" class="img-circle">
                         </label>
                     </div>
                 </div>

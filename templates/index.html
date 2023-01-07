@@ -271,29 +271,24 @@
             </div>
             <!--273~279更改,都需要抓取會員的資料-->
             <div class="home_inf">
-                <img decoding="async" src="asset/img/mem_pic1.jpg" class="img-circle"
+                <img decoding="async" src="{{user.MemPic}}" class="img-circle"
                     style="width: 82px; height: 82px;"> <!--會員頭貼-->
                 <p class="pnt_inf_t">炭治郎</p> <!--會員姓名-->
                 <div class="break_r"></div>
                 <p class="pnt_inf_t">本月碳排放量</p>
-                <p class="pnt_inf_n">10.234t</p> <!--會員碳排量-->
+                <p class="pnt_inf_n">{{user.MCarbon}}t</p> <!--會員碳排量-->
             </div>
             <!--282~297新增,需設定連結-->
+            
             <div class="home_mis">
                 <h4 id="home_mistitle">每日任務</h4>
                 <hr class="home_mishr">
-                <a class="btn home_mission" href="activity.html">
-                    <h6 id="mis_word">-100 碳排</h6>
-                    <h5>1. 淨海/淨灘/淨街</h5>
-                </a>
-                <a class="btn home_mission" href="activity.html">
-                    <h6 id="mis_word">-120 碳排</h6>
-                    <h5>2. 植樹活動</h5>
-                </a>
-                <a class="btn home_mission" href="activity.html">
-                    <h6 id="mis_word">-150 碳排</h6>
-                    <h5>3. 挑戰以腳代步</h5>
-                </a>
+                {% for item in items %}
+                <form action="/acti_p/"class="btn home_mission"  method = "POST" >{% csrf_token %}
+                    <h6 id="mis_word">-{{item.VCarbon}} 碳排</h6>
+                    <input type = "text" class="v_title" name = 'name' value = '{{item.Vname}}'>
+                </form>
+                {%endfor%}
             </div>
         </div>
     </div>

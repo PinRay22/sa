@@ -14,7 +14,7 @@
     </script>
     <link rel="stylesheet" href="../static/css/index.css">
     <link rel="stylesheet" href="../static/css/basic.css">
-    <title>首頁</title>
+    <title>點數兌換確認</title>
 </head>
 
 <body>
@@ -69,14 +69,19 @@
                         <button class="nav-item" data-bs-toggle="modal" data-bs-target="#ppModal">
                             隱私權條款
                         </button>
-                        <form action="/logout/" method = "POST">{% csrf_token %}
-                            <input type="submit" class="nav-item" value="登出"></input>
+                        <form>
+                            <input type="submit" class="nav-item" value="登出">
                         </form>
                     </div>
                 </div>
             </div>
             <p class="navbar-brand t_fontsize">碳制郎</p>
-            <a class="btn_mem" href="/vmember/" role="button">
+            <!--未登入前-->
+            <a class="btn" style="padding:auto; height:50px; border:1px solid black;" href="login.html" role="button">
+                測試用<br>(登入註冊)
+            </a>
+            <!--登入後-->
+            <a class="btn_mem" href="member.html" role="button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="black" class="bi bi-person-circle"
                     viewBox="0 0 16 16">
                     <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
@@ -86,6 +91,7 @@
             </a>
         </div>
     </nav>
+
     <!--燈箱-->
     <!--關於-->
     <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
@@ -226,208 +232,23 @@
         </div>
     </div>
     <!--header end-->
+    <!--確認兌換服務-->
     <div class="main_body">
-        <div class="tab-pane main_body point_bg" id="pills-point" role="tabpanel" aria-labelledby="pills-point-tab">
-            <div class="pnt_inf">
-                <p class="pnt_inf_t">累積點數</p>
-                <p class="pnt_inf_n">{{item.MemPoint}}</p>
-                <div class="break_r"></div>
-                <p class="pnt_inf_t">即將到期</p>
-                <p class="pnt_inf_n">40</p>
-                <p style="font-size: 8;">~2023/01/31</p>
-            </div>
-            <div class="btn_wrap">
-                <button class="btn btn-primary pnt_rec_btn" data-bs-toggle="modal"
-                    data-bs-target="#pntrecModal">點數增減紀錄</button>
-            </div>
-            <div class="wrap_pnt">
-                <nav>
-                    <div class="nav nav-tabs pnt_tab nav-pills" id="nav-tab" role="tablist">
-                        <button class="nav-link active pnt_tab_btn" id="pnt-exc-tab" data-bs-toggle="tab"
-                            data-bs-target="#pnt-exc" type="button" role="tab" aria-controls="pnt-exc"
-                            aria-selected="true">點數兌換</button>
-                        <button class="nav-link pnt_tab_btn" id="pnt_svc-tab" data-bs-toggle="tab"
-                            data-bs-target="#pnt_svc" type="button" role="tab" aria-controls="pnt_svc"
-                            aria-selected="false">可用服務</button>
-                    </div>
-                </nav>
-                <div class="tab-content pnt_cnt" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="pnt-exc" role="tabpanel" aria-labelledby="pnt-exc-tab">
-                        <button class="btn btn_type" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapsefood" aria-expanded="false" aria-controls="collapsefood">
-                            食
-                        </button>
-                        
-                        <div class="collapse clps" id="collapsefood">
-                            <div class="card card-body" style="padding:5px 0;">
-                                {% for ser in ser1 %}
-                                <form action="/pe_view/" method = "POST" >{% csrf_token %}
-                                    <div class="voucher">
-                                        <div>
-                                            <!--<input type="text" class="v_title" value="" readonly>-->
-                                            <input type = "text" class="v_title" name = 'name' value = '{{ser.Sname}}'>
-                                            <p class="v_price">所需點數:{{ser.SPoint}}</p>
-                                            <p class=" v_dtl">使用期限:兌換後{{ser.SDDline}}日內</p>
-                                        </div>
-                                        <div class="wrap_pexc">
-                                            <input type="submit" class="btn btn-primary pnt_exchange"
-                                                value="兌換"></input>
-                                        </div>
-                                    </div>
-                                </form>
-                                {% endfor %}
-                            </div>
-                        </div>
-                        <button class="btn btn_type" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseclo" aria-expanded="false" aria-controls="collapseclo">
-                            衣
-                        </button>
-
-                        <div class="collapse clps" id="collapseclo">
-                            <div class="card card-body">
-                                {% for ser in ser2 %}
-                                <form action="/pe_view/" method = "POST" >{% csrf_token %}
-                                    <div class="voucher">
-                                        <div>
-                                            <!--<input type="text" class="v_title" value="" readonly>-->
-                                            <input type = "text" class="v_title" name = 'name' value = '{{ser.Sname}}'>
-                                            <p class="v_price">所需點數:{{ser.SPoint}}</p>
-                                            <p class=" v_dtl">使用期限:兌換後{{ser.SDDline}}日內</p>
-                                        </div>
-                                        <div class="wrap_pexc">
-                                            <input type="submit" class="btn btn-primary pnt_exchange"
-                                                value="兌換"></input>
-                                        </div>
-                                    </div>
-                                </form>
-                                {% endfor %}
-                            </div>
-                        </div>
-                        <button class="btn btn_type" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapselive" aria-expanded="false" aria-controls="collapselive">
-                            住
-                        </button>
-
-                        <div class="collapse clps" id="collapselive">
-                            <div class="card card-body">
-                                {% for ser in ser3 %}
-                                <form action="/pe_view/" method = "POST" >{% csrf_token %}
-                                    <div class="voucher">
-                                        <div>
-                                            <!--<input type="text" class="v_title" value="" readonly>-->
-                                            <input type = "text" class="v_title" name = 'name' value = '{{ser.Sname}}'>
-                                            <p class="v_price">所需點數:{{ser.SPoint}}</p>
-                                            <p class=" v_dtl">使用期限:兌換後{{ser.SDDline}}日內</p>
-                                        </div>
-                                        <div class="wrap_pexc">
-                                            <input type="submit" class="btn btn-primary pnt_exchange"
-                                                value="兌換"></input>
-                                        </div>
-                                    </div>
-                                </form>
-                                {% endfor %}
-                            </div>
-                        </div>
-                        <button class="btn btn_type" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapsetrans" aria-expanded="false" aria-controls="collapsetrans">
-                            行
-                        </button>
-
-                        <div class="collapse clps" id="collapsetrans">
-                            <div class="card card-body">
-                                {% for ser in ser4 %}
-                                <form action="/pe_view/" method = "POST" >{% csrf_token %}
-                                    <div class="voucher">
-                                        <div>
-                                            <!--<input type="text" class="v_title" value="" readonly>-->
-                                            <input type = "text" class="v_title" name = 'name' value = '{{ser.Sname}}'>
-                                            <p class="v_price">所需點數:{{ser.SPoint}}</p>
-                                            <p class=" v_dtl">使用期限:兌換後{{ser.SDDline}}日內</p>
-                                        </div>
-                                        <div class="wrap_pexc">
-                                            <input type="submit" class="btn btn-primary pnt_exchange"
-                                                value="兌換"></input>
-                                        </div>
-                                    </div>
-                                </form>
-                                {% endfor %}
-                            </div>
-                        </div>
-                        <button class="btn btn_type" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseedu" aria-expanded="false" aria-controls="collapseedu">
-                            育樂
-                        </button>
-
-                        <div class="collapse clps" id="collapseedu">
-                            <div class="card card-body">
-                                {% for ser in ser5 %}
-                                <form action="/pe_view/" method = "POST" >{% csrf_token %}
-                                    <div class="voucher">
-                                        <div>
-                                            <!--<input type="text" class="v_title" value="" readonly>-->
-                                            <input type = "text" class="v_title" name = 'name' value = '{{ser.Sname}}'>
-                                            <p class="v_price">所需點數:{{ser.SPoint}}</p>
-                                            <p class=" v_dtl">使用期限:兌換後{{ser.SDDline}}日內</p>
-                                        </div>
-                                        <div class="wrap_pexc">
-                                            <input type="submit" class="btn btn-primary pnt_exchange"
-                                                value="兌換"></input>
-                                        </div>
-                                    </div>
-                                </form>
-                                {% endfor %}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="pnt_svc" role="tabpanel" aria-labelledby="pnt_svc-tab">
-                        {% for ex in exs %}
-                        <form action="/delete/" method = "POST">{% csrf_token %}
-                            <div class="voucher">
-                                <div>
-                                    <input type="text" class="v_title" value="{{ex.Ename}}" name = 'dname' readonly>
-                                    <p class=" v_dtl">使用期限:剩餘{{ex.EDDline}}日</p>
-                                </div>
-                                <div class="wrap_pexc">
-                                    <input type="submit" class="btn btn-primary pnt_exchange" value="使用"></input>
-                                </div>
-                            </div>
-                        </form>
-                        {% endfor %}
-                    </div>
+        <div class="mid_body">
+            <form action="">
+                <p class="check_exc_t">請確認使用服務內容：</p>
+                <p>可食用牛肉500g</p>
+                <div class="d-grid gap-2">
+                    <input type="submit" value="確認使用" class="btn btn-primary">
+                    <a href="point.html" role="button" class="btn btn-primary">取消使用</a>
                 </div>
-            </div>
-
-        </div>
-    </div>
-    <!--點數增減紀錄-->
-    <div class="modal fade" id="pntrecModal" aria-hidden="true" aria-labelledby="pntrecModalLabel" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title" id="pntrecModalLabel">點數增減紀錄</h3>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    {% for user in users %}
-                    <form>
-                        <div>
-                            <p>日期：{{user.PDATE}}</p>
-                            <p>點數增減：{{user.PChange}}{{user.PPoint}}</p>
-                            <p>說明：{{user.PPS}}</p>
-                        </div>
-                        <hr>
-                    </form>
-                
-                    {% endfor %}
-            
-                </div>
-            </div>
+            </form>
         </div>
     </div>
     <!--底部-->
     <nav class="nav position-fixed bottom-0 bg-secondary nav_width" aria-label="Secondary navigation"
         style="background-color: #c9ad8e !important; height: 120px;">
-        <a class="nav-link active b_nav_w" aria-current="page" href="/point_view/">
+        <a class="nav-link active b_nav_w" aria-current="page" href="point.html">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-p-circle"
                 viewBox="0 0 16 16">
                 <path
@@ -437,7 +258,7 @@
                 <p class="b_nav_t">點數資訊</p>
             </div>
         </a>
-        <a class="nav-link b_nav_w" href="/comp_view/">
+        <a class="nav-link b_nav_w" href="comp.html">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-shop"
                 viewBox="0 0 16 16">
                 <path
@@ -447,7 +268,7 @@
                 <p class="b_nav_t">合作廠商</p>
             </div>
         </a>
-        <a class="nav-link b_nav_w" href="/index/">
+        <a class="nav-link b_nav_w" href="index.html">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-house-door"
                 viewBox="0 0 16 16">
                 <path
@@ -457,7 +278,7 @@
                 <p class="b_nav_t">首頁</p>
             </div>
         </a>
-        <a class="nav-link b_nav_w" href="/rank/">
+        <a class="nav-link b_nav_w" href="rank.html">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor"
                 class="bi bi-bar-chart-line" viewBox="0 0 16 16">
                 <path
@@ -467,7 +288,7 @@
                 <p class="b_nav_t">碳排排名</p>
             </div>
         </a>
-        <a class="nav-link b_nav_w" href="/record_view/">
+        <a class="nav-link b_nav_w" href="record.html">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-card-list"
                 viewBox="0 0 16 16">
                 <path
@@ -480,13 +301,6 @@
             </div>
         </a>
     </nav>
-    {% if messages %}
-        <script>
-        {% for msg in messages %}
-            alert('{{ msg.message }}');
-        {% endfor %}
-        </script>
-        {% endif %}
 </body>
 
 </html>
