@@ -235,7 +235,7 @@
             <form action="/exchange/"method = "POST" >{% csrf_token %}
                 <p class="check_exc_t">請確認兌換服務內容：</p>
                 
-                <input type = "text" class="v_title" name = 'SerName' value = '{{ser.Sname}}' readonly>
+                <input type = "text" class="v_title" name = 'SerName' value = '{{ser.Sname}}' readonly style="background:#c9ad8e">
                 <p class="v_price">所需點數:{{ser.SPoint}}</p>
                 <p class=" v_dtl">使用期限:兌換後{{ser.SDDline}}日內</p>
                 <div class="d-grid gap-2">

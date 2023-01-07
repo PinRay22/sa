@@ -264,7 +264,6 @@
                                 <form action="/pe_view/" method = "POST" >{% csrf_token %}
                                     <div class="voucher">
                                         <div>
-                                            <!--<input type="text" class="v_title" value="" readonly>-->
                                             <input type = "text" class="v_title" name = 'name' value = '{{ser.Sname}}'>
                                             <p class="v_price">所需點數:{{ser.SPoint}}</p>
                                             <p class=" v_dtl">使用期限:兌換後{{ser.SDDline}}日內</p>
@@ -284,7 +283,7 @@
                         </button>
 
                         <div class="collapse clps" id="collapseclo">
-                            <div class="card card-body">
+                            <div class="card card-body" style="padding:5px 0;">
                                 {% for ser in ser2 %}
                                 <form action="/pe_view/" method = "POST" >{% csrf_token %}
                                     <div class="voucher">
@@ -309,7 +308,7 @@
                         </button>
 
                         <div class="collapse clps" id="collapselive">
-                            <div class="card card-body">
+                            <div class="card card-body" style="padding:5px 0;">
                                 {% for ser in ser3 %}
                                 <form action="/pe_view/" method = "POST" >{% csrf_token %}
                                     <div class="voucher">
@@ -334,7 +333,7 @@
                         </button>
 
                         <div class="collapse clps" id="collapsetrans">
-                            <div class="card card-body">
+                            <div class="card card-body" style="padding:5px 0;">
                                 {% for ser in ser4 %}
                                 <form action="/pe_view/" method = "POST" >{% csrf_token %}
                                     <div class="voucher">
@@ -359,7 +358,7 @@
                         </button>
 
                         <div class="collapse clps" id="collapseedu">
-                            <div class="card card-body">
+                            <div class="card card-body" style="padding:5px 0;">
                                 {% for ser in ser5 %}
                                 <form action="/pe_view/" method = "POST" >{% csrf_token %}
                                     <div class="voucher">
