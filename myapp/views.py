@@ -10,7 +10,8 @@ from systemanalyst import settings
 from django.template.loader import render_to_string
 from django.contrib.sessions.models import Session
 from jinja2 import Environment, FileSystemLoader
-
+now = timezone.now
+now = datetime.datetime.now()
 
 def insert(request):
     order.MemID = 1
@@ -21,6 +22,26 @@ def insert(request):
     order.SDATE = 2023/1/6
     order.save()
     return render(request, 'index.html', locals())
+
+def pe_view(request):
+    sname = request.POST.get('name', '') 
+    ser = Service.objects.get( Sname = sname )
+    return render(request, 'point_exc.html', locals())
+
+def acti_p(request):
+    san=request.session.get('session_id')
+    if san != 0 and san is not None :
+        item = Volunteer.objects.get()
+        cd = item.VCarbon
+        user= member.objects.get( Memsanfan = san )
+        mcd = user.MCarbon
+        member.objects.filter( Memsanfan = san ).update( MCarbon = ( mcd - cd))
+        messages.error(request, '太棒了!一起為地球努力吧')
+        return HttpResponseRedirect("/point_view/")
+    else:
+        messages.error(request, '您尚未登入，請先登入')
+        return HttpResponseRedirect("/login/")
+    
 
 def point_view(request):
     san=request.session.get('session_id')
@@ -50,14 +71,27 @@ def record_view(request):
         messages.error(request, '您尚未登入，請先登入')
         return HttpResponseRedirect("/login/")
 
+def cmphoto(request):
+    san=request.session.get('session_id')
+    Pic = request.POST.get('picnum', '') 
+    member.objects.filter( Memsanfan = san ).update( MemPic = Pic)
+    messages.error(request, '完成頭貼更換')
+    return HttpResponseRedirect("/vmember/")
+
 
 def index(request): 
     san=request.session.get('session_id')
     print(san)
+    items = Volunteer.objects.all()
+    user = member.objects.get( Memsanfan = san )
     return render(request, 'index.html', locals())
 
 def login_view(request):
     return render(request, 'login.html', locals())
+
+def vmem_photo(request):
+    return render(request, 'mem_photo.html', locals())
+    
 
 def rank_view(request):
     return render(request, 'rank.html', locals())
@@ -71,19 +105,45 @@ def logout(request):
     #return render(request, 'index.html', locals())
     return HttpResponseRedirect("/index/")
 
+def delete(request):
+    sname = request.POST.get('dname', '') 
+    dd = Exchanged.objects.get( Ename = sname )
+    dd.delete() 
+    messages.error(request,'用爽沒')
+    return HttpResponseRedirect("/point_view/")
+
+
 def exchange(request):
     san=request.session.get('session_id')
+    print(san)
+    sname = request.POST.get('SerName', '') 
     user = member.objects.get( Memsanfan = san )
-    point = user.MemPoint
-    SerName = request.POST.get("ser_name")
-    Ser = Exchanged.objects.get( Ename = SerName )
-    PointCost = Ser.EPoint 
-    if point < PointCost :
+    Mpoint = user.MemPoint
+    #Sername = str(request.POST.get('SerName'))
+    Ser = Service.objects.get( Sname = sname )
+    PointCost = Ser.SPoint
+    if Mpoint < PointCost :
         messages.error(request, '您的點數需大於兌換點數！')
-        return HttpResponseRedirect("/exchange/")
-    member.objects.filter( Memsanfan = san ).update( MemPoint = ( point - PointCost))
+        return HttpResponseRedirect("/point_view/")
+    member.objects.filter( Memsanfan = san ).update( MemPoint = ( Mpoint - PointCost))
+    pp = point(PID = '0'
+    ,Memsanfan = san
+    ,PChange = '-'
+    ,PPS = sname
+    ,PPoint = PointCost
+    ,PCmp = '0'
+    ,PDATE = now)
+    pp.save()
+    ee = Exchanged(EID = '0'
+    ,Memsanfan = san
+    ,Ename = sname
+    ,EPoint = PointCost
+    ,ECmp = '0'
+    ,EDDline = '20'
+    ,EDATE = now)
+    ee.save()
     messages.error(request, '兌換成功')
-    return HttpResponseRedirect("/exchange/")
+    return HttpResponseRedirect("/point_view/")
     
 
 def member_view(request):
@@ -99,6 +159,8 @@ def member_view(request):
         Mem_mail=user.Memmail
         Mem_xin=user.Memxin
         Mem_point=user.MemPoint
+        Mem_pic=user.MemPic
+        Mem_CB = user.MCarbon
         return render(request, 'vmember.html', locals())
     else:
         messages.error(request, '您尚未登入，請先登入')
@@ -119,48 +181,6 @@ def login_p(request):
         request.session['session_id'] = 0
         messages.error(request, '帳號或密碼錯誤')  
         return render(request, 'login.html', locals())
-   
-
-
-""" def login_p(request):
-    if request.user.is_authenticated:
-        print("is auth")
-        return HttpResponseRedirect('/index/')
-    ck = member.objects.filter( Memsanfan = request.POST['san']).count()
-    print("ck",ck)
-    if ck == 0 :
-        messages.error(request, '帳號或密碼錯誤')  
-        return render(request, 'index.html', locals())
-    m = member.objects.get( Memsanfan = request.POST['san'])
-    if m.MemPW != request.POST['password']:
-        messages.error(request, '帳號或密碼錯誤')  
-        return render(request, 'index.html', locals())
-    username = request.POST.get('san', '')
-    password = request.POST.get('password', '')
-    user = auth.authenticate( username = username, password = password)
-    if user is not None and user.is_active:
-        print(user)
-        print('user.is_active')
-        auth.login(request, user)
-        messages.error(request, '登入成功')  
-        return render(request, 'index.html', locals())
-    else:
-        print(user)
-        print('user.n_active')
-        return render(request, 'index.html', locals()) """
-
-def main(request):
-    if request.user.is_authenticated:
-        san = request.user
-        user = member.objects.get( Memsanfan = san )
-        Mem_name=member.MemName
-        Mem_phone=member.MemPh
-        Mem_password=member.MemPW
-        Mem_address=member.MemAddr
-        Mem_mail=member.Memmail
-        Mem_xin=member.Memxin
-        Mem_point=member.MemPoint
-    return render(request, 'index.html', locals())
 
 def signup_view(request):
     return render(request, 'signup.html', locals())
@@ -186,7 +206,7 @@ def alt_member(request):
         tName=form['name']
         tPh = form['phone']
         tPW = form['password']
-        tAddr = form['address']
+        tAddr = form['caddress']
         tmail = form['mail']
         txin = form['xin']
         user = member.objects.get( Memsanfan = memsan )
@@ -216,7 +236,7 @@ def signup(request):
         tMemAddr = form['address']
         tMemmail = form['mail']
         tMemxin = form['xin']
-        newmember = member( MemID = tMemID, MemName = tMemName, MemPh = tMemPh, MemPW= tMemPW, Memsanfan = tMemsanfan, MemAddr = tMemAddr, Memmail = tMemmail, Memxin = tMemxin)
+        newmember = member( MemID = tMemID, MemName = tMemName, MemPh = tMemPh, MemPW= tMemPW, Memsanfan = tMemsanfan, MemAddr = tMemAddr, Memmail = tMemmail, Memxin = tMemxin, MCarbon = 0, MemPoint = 0)
         newmember.save()
         print("success")
         messages.error(request, '註冊成功')

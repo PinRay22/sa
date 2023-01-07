@@ -20,7 +20,9 @@ class member(models.Model):
     MemAddr = models.CharField('會員地址', max_length=100, null=False)
     Memmail = models.CharField('會員電郵', max_length=100, null=False)
     Memxin = models.CharField('會員信用卡號', max_length=100, null=False)
+    MCarbon = models.FloatField('碳排量', null=True)
     MemPoint = models.IntegerField('碳權點數', null=True)
+    MemPic = models.CharField('頭貼', max_length=100, null=True)
 
     def __str__(self) -> str:
         return self.MemID
@@ -36,7 +38,7 @@ class order(models.Model):
 
 
 class point(models.Model):
-    PID = models.CharField('點數變更編號',max_length=1000,primary_key=True)
+    PID = models.CharField('點數變更編號',max_length=1000)
     Memsanfan = models.CharField('會員身分證', max_length=100, null=False)
     PChange = models.CharField('增減', max_length=100, null=False)
     PPS = models.CharField('說明', max_length=100, null=False)
@@ -46,10 +48,10 @@ class point(models.Model):
 
 
 class Exchanged(models.Model):
-    EID = models.CharField('點數兌換編號',max_length=1000,primary_key=True)
+    EID = models.CharField('點數兌換編號',max_length=1000)
     Memsanfan = models.CharField('會員身分證', max_length=100, null=False)
     Ename = models.CharField('服務', max_length=100, null=False)
-    EPS = models.CharField('說明', max_length=100, null=False)
+    EPS = models.CharField('說明', max_length=100 )
     EPoint = models.IntegerField('點數', null=False)
     ECmp = models.CharField('合作廠商', max_length=100, null=False)
     EDDline = models.CharField('剩餘期限', max_length=100, null=False)
@@ -63,6 +65,12 @@ class Service(models.Model):
     SPoint = models.IntegerField('點數', null=False)
     SDDline = models.CharField('使用期限', max_length=100, null=False)
     SCmp = models.CharField('合作廠商', max_length=100, null=False)
+
+class Volunteer(models.Model):
+    VID = models.CharField('服務編號',max_length=1000)
+    Vname = models.CharField('服務', max_length=100, null=False)
+    VCarbon = models.IntegerField('碳排', null=False)
+    VCmp = models.CharField('合作廠商', max_length=100)
 
 class History(models.Model):
     HID = models.CharField('紀錄編號',max_length=1000,primary_key=True)
