@@ -117,7 +117,7 @@
                     <div class="about_mem">
                         <h5 class="about_name">10944206 王靖淳</h5>
                         <div class="about_img">
-                            <img decoding="async" src="../static/img/cchun.JPG" class="aboutimg-circle">
+                            <img decoding="async" src="../static/img/cchun.jpg" class="aboutimg-circle">
                         </div>
                     </div>
                     <div class="about_mem">
@@ -255,7 +255,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="sign_mail" class="col-form-label">電子信箱:</label>
-                    <input type="text" class="form-control" id="sign_mail" name = 'mail'>
+                    <input type="email" class="form-control" id="sign_mail" name = 'mail'>
                 </div>
                 <div class="mb-3">
                     <label for="sign_card" class="col-form-label">信用卡卡號:</label>
@@ -266,11 +266,12 @@
                     <input type="text" class="form-control" id="sign_psd" name = 'password'>
                 </div>
                 <div class="d-grid gap-2 col-6 mx-auto">
-                    <input type="submit" class="btn btn-primary" id="membtn" value="獲取驗証碼">
+                    <!--<input type="submit" class="btn btn-primary" id="membtn" value="獲取驗証碼">-->
+                    <input type="submit" class="btn btn-primary" id="membtn" value="註冊">
                 </div>
             </form>
             <div class="d-grid gap-2">
-                <a class="btn" href="login.html" style="color:#6C6C6C;">返回登入</a>
+                <a class="btn" href="/login/" style="color:#6C6C6C;">返回登入</a>
             </div>
         </div>
     </div>
@@ -287,7 +288,7 @@
                 <p class="b_nav_t">點數資訊</p>
             </div>
         </a>
-        <a class="nav-link active b_nav_w" href="/comp_view/">
+        <a class="nav-link b_nav_w" href="/comp_view/">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-shop"
                 viewBox="0 0 16 16">
                 <path

@@ -15,7 +15,7 @@
     </script>
     <link rel="stylesheet" href="../static/css/index.css">
     <link rel="stylesheet" href="../static/css/basic.css">
-    <title>首頁</title>
+    <title>消費紀錄</title>
 </head>
 
 <body>
@@ -117,7 +117,7 @@
                     <div class="about_mem">
                         <h5 class="about_name">10944206 王靖淳</h5>
                         <div class="about_img">
-                            <img decoding="async" src="../static/img/cchun.JPG" class="aboutimg-circle">
+                            <img decoding="async" src="../static/img/cchun.jpg" class="aboutimg-circle">
                         </div>
                     </div>
                     <div class="about_mem">
@@ -233,12 +233,12 @@
         <div class="tab-pane main_body rec_bg" id="pills-rec" role="tabpanel" aria-labelledby="pills-rec-tab">
             <p id="spendwd">消費紀錄</p>
             {% for item in items %}
-            <form action="/rede/" method = "POST">{% csrf_token %}
-                <input type = "text" class="v_title" name = 'Cname' value = '{{item.OCmp}}'>
-                <!---<h5 id="spendtxt">{{item.OCmp}}</h5>--->
+            <form action="/rede/" method = "POST" style="width:90%; margin:10px auto;">{% csrf_token %}
+                <input type = "text" class="v_title" name = 'Cname' value = '{{item.OCmp}}' style="background-color: #d4d2d2;">
+                <!--<h5 id="spendtxt">{{item.OCmp}}</h5>-->
                 <input class="btn btn-primary" type="submit" value="詳細資訊" id="spendbt">
                 <h6 id="spenddate">{{item.SDATE}}</h6>
-                <hr class="rec_hr">
+                <hr class="rec_hr" style="width:100%">
             </form>
             {% endfor %}
         </div>

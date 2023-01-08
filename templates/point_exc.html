@@ -117,7 +117,7 @@
                     <div class="about_mem">
                         <h5 class="about_name">10944206 王靖淳</h5>
                         <div class="about_img">
-                            <img decoding="async" src="../static/img/cchun.JPG" class="aboutimg-circle">
+                            <img decoding="async" src="../static/img/cchun.jpg" class="aboutimg-circle">
                         </div>
                     </div>
                     <div class="about_mem">
@@ -235,12 +235,12 @@
             <form action="/exchange/"method = "POST" >{% csrf_token %}
                 <p class="check_exc_t">請確認兌換服務內容：</p>
                 
-                <input type = "text" class="v_title" name = 'SerName' value = '{{ser.Sname}}' readonly style="background:#c9ad8e">
+                <input type = "text" class="v_title" name = 'SerName' value = '{{ser.Sname}}' readonly style="background:#c5b5b5">
                 <p class="v_price">所需點數:{{ser.SPoint}}</p>
                 <p class=" v_dtl">使用期限:兌換後{{ser.SDDline}}日內</p>
                 <div class="d-grid gap-2">
-                    <input type="submit" value="確認兌換" class="btn btn-primary"></input>
-                    <a href="/point_view/" role="button" class="btn btn-primary">取消兌換</a>
+                    <input type="submit" value="確認兌換" class="btn btn-primary" id="membtn"></input>
+                    <a href="/point_view/" role="button" class="btn btn-primary" id="membtn">取消兌換</a>
                 </div>
             </form>
         </div>
@@ -248,7 +248,7 @@
     <!--底部-->
     <nav class="nav position-fixed bottom-0 bg-secondary nav_width" aria-label="Secondary navigation"
         style="background-color: #c9ad8e !important; height: 120px;">
-        <a class="nav-link b_nav_w" aria-current="page" href="/point_view/">
+        <a class="nav-link active b_nav_w" aria-current="page" href="/point_view/">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-p-circle"
                 viewBox="0 0 16 16">
                 <path
@@ -258,7 +258,7 @@
                 <p class="b_nav_t">點數資訊</p>
             </div>
         </a>
-        <a class="nav-link active b_nav_w" href="/comp_view/">
+        <a class="nav-link b_nav_w" href="/comp_view/">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-shop"
                 viewBox="0 0 16 16">
                 <path

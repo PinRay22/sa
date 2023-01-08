@@ -14,7 +14,7 @@
     </script>
     <link rel="stylesheet" href="../static/css/index.css">
     <link rel="stylesheet" href="../static/css/basic.css">
-    <title>消費紀錄</title>
+    <title>消費詳細紀錄</title>
 </head>
 
 <body>
@@ -116,7 +116,7 @@
                     <div class="about_mem">
                         <h5 class="about_name">10944206 王靖淳</h5>
                         <div class="about_img">
-                            <img decoding="async" src="../static/img/cchun.JPG" class="aboutimg-circle">
+                            <img decoding="async" src="../static/img/cchun.jpg" class="aboutimg-circle">
                         </div>
                     </div>
                     <div class="about_mem">
@@ -234,6 +234,7 @@
                 <h4>{{user.OCmp}}</h4>
                 <h5>日期：{{user.SDATE}}</h5>
                 <h4>消費內容：{{user.Serv}}</h4>
+                <h5>消費金額：</h5>
                 <h5>碳權點數數：{{user.SPoint}}</h5>
                 <h5>碳排量：{{user.SCarbon}}</h5>
             </form>
@@ -258,7 +259,7 @@
                 <p class="b_nav_t">點數資訊</p>
             </div>
         </a>
-        <a class="nav-link active b_nav_w" href="/comp_view/">
+        <a class="nav-link b_nav_w" href="/comp_view/">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-shop"
                 viewBox="0 0 16 16">
                 <path
@@ -288,7 +289,7 @@
                 <p class="b_nav_t">碳排排名</p>
             </div>
         </a>
-        <a class="nav-link b_nav_w" href="/record_view/">
+        <a class="nav-link active b_nav_w" href="/record_view/">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-card-list"
                 viewBox="0 0 16 16">
                 <path

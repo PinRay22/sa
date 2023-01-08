@@ -135,7 +135,7 @@
                     <div class="about_mem">
                         <h5 class="about_name">10944206 王靖淳</h5>
                         <div class="about_img">
-                            <img decoding="async" src="../static/img/cchun.JPG" class="aboutimg-circle">
+                            <img decoding="async" src="../static/img/cchun.jpg" class="aboutimg-circle">
                         </div>
                     </div>
                     <div class="about_mem">
@@ -270,13 +270,15 @@
                 </div>
             </div>
             <!--273~279更改,都需要抓取會員的資料-->
-            <div class="home_inf">
+            <div class="home_inf" style="padding:10px">
                 <img decoding="async" src="{{user.MemPic}}" class="img-circle"
-                    style="width: 82px; height: 82px;"> <!--會員頭貼-->
-                <p class="pnt_inf_t">炭治郎</p> <!--會員姓名-->
+                    style="width: 120px; height: 120px;"> <!--會員頭貼-->
                 <div class="break_r"></div>
-                <p class="pnt_inf_t">本月碳排放量</p>
-                <p class="pnt_inf_n">{{user.MCarbon}}t</p> <!--會員碳排量-->
+                <p class="pnt_inf_t" style="maring:0 auto;"><b>{{user.MemName}}</b></p> <!--會員姓名-->
+                <button class="carbonbtn" data-bs-toggle="modal" data-bs-target="#carbonModal">
+                    <p class="pnt_inf_t">本月碳排放量</p>
+                    <p class="home_c">{{user.MCarbon}}t</p> <!--會員碳排量-->
+                </button>
             </div>
             <!--282~297新增,需設定連結-->
             <!--<div class="home_mis">
@@ -292,18 +294,39 @@
             <div class="home_mis">
                 <h4 id="home_mistitle">每日任務</h4>
                 <hr class="home_mishr">
-                <a class="btn home_mission" href="activity.html">
+                <a class="btn home_mission" href="/activity/">
                     <h6 id="mis_word">-100 碳排</h6>
                     <h5>1. 淨海/淨灘/淨街</h5>
                 </a>
-                <a class="btn home_mission" href="activity.html">
+                <a class="btn home_mission" href="/activity/">
                     <h6 id="mis_word">-120 碳排</h6>
                     <h5>2. 植樹活動</h5>
                 </a>
-                <a class="btn home_mission" href="activity.html">
+                <a class="btn home_mission" href="/activity/">
                     <h6 id="mis_word">-150 碳排</h6>
                     <h5>3. 挑戰以腳代步</h5>
                 </a>
+            </div>
+        </div>
+    </div>
+    <!--碳排增減紀錄-->
+    <div class="modal fade" id="carbonModal" aria-hidden="true" aria-labelledby="carbonModalLabel" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="carbonModalLabel">碳排增減紀錄</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div>
+                            <p>日期：2022/12/31</p>
+                            <p>碳排增減：+100</p>
+                            <p>說明：使用智慧洗</p>
+                        </div>
+                        <hr>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
