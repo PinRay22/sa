@@ -117,6 +117,13 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
     --bs-btn-hover-border-color: #c98e8e;
     margin-bottom: 10px;
 }
+#logouta{
+    text-decoration: none;
+}
+#logouta:visited,#logouta:active{
+    color: black;
+    text-decoration: none;
+}
 /*下方欄*/
 .nav_width{
     width: 100%;
@@ -262,6 +269,11 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
     float: right;
     margin-top: 5px;
     color: #7B7B7B;
+}
+.carbonbtn{
+    background-color: #c9ad8e;
+    border: 0;
+    height: 70px;
 }
 /*排名*/
 .dropdown-toggle {
