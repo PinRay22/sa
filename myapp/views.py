@@ -23,6 +23,9 @@ def insert(request):
     order.save()
     return render(request, 'index.html', locals())
 
+def start(request):
+    return render(request, 'before_login.html', locals())
+
 def pe_view(request):
     sname = request.POST.get('name', '') 
     ser = Service.objects.get( Sname = sname )
@@ -78,6 +81,10 @@ def cmphoto(request):
     messages.error(request, '完成頭貼更換')
     return HttpResponseRedirect("/vmember/")
 
+def rede(request):
+    cmp = request.POST.get('Cname', '') 
+    user = order.objects.get( OCmp = cmp )
+    return render(request, 'record_detail.html', locals())
 
 def index(request): 
     san=request.session.get('session_id')
@@ -92,18 +99,27 @@ def login_view(request):
 def vmem_photo(request):
     return render(request, 'mem_photo.html', locals())
     
-
 def rank_view(request):
-    return render(request, 'rank.html', locals())
+    san=request.session.get('session_id')
+    if san != 0 and san is not None :
+        return render(request, 'rank.html', locals())
+    else:
+        messages.error(request, '您尚未登入，請先登入')
+        return HttpResponseRedirect("/login/")
 
 def comp_view(request):
-    return render(request, 'comp.html', locals())
+    san=request.session.get('session_id')
+    if san != 0 and san is not None :
+        return render(request, 'comp.html', locals())
+    else:
+        messages.error(request, '您尚未登入，請先登入')
+        return HttpResponseRedirect("/login/")
 
 def logout(request): 
     request.session['session_id'] = 0
     messages.error(request, '你登出囉')  
     #return render(request, 'index.html', locals())
-    return HttpResponseRedirect("/index/")
+    return HttpResponseRedirect("/indexf/")
 
 def delete(request):
     sname = request.POST.get('dname', '') 
@@ -111,7 +127,6 @@ def delete(request):
     dd.delete() 
     messages.error(request,'用爽沒')
     return HttpResponseRedirect("/point_view/")
-
 
 def exchange(request):
     san=request.session.get('session_id')
@@ -121,6 +136,7 @@ def exchange(request):
     Mpoint = user.MemPoint
     #Sername = str(request.POST.get('SerName'))
     Ser = Service.objects.get( Sname = sname )
+    ddate = int(Ser.SDDline) - 1
     PointCost = Ser.SPoint
     if Mpoint < PointCost :
         messages.error(request, '您的點數需大於兌換點數！')
@@ -139,7 +155,7 @@ def exchange(request):
     ,Ename = sname
     ,EPoint = PointCost
     ,ECmp = '0'
-    ,EDDline = '20'
+    ,EDDline = ddate
     ,EDATE = now)
     ee.save()
     messages.error(request, '兌換成功')
@@ -176,11 +192,12 @@ def login_p(request):
         s = Session.objects.all()
         print(sanfan)
         messages.error(request, '登入成功')
-        return render(request, 'index.html', locals())
+        return HttpResponseRedirect("/index/")
+        #return render(request, '/index/', locals())
     else :
         request.session['session_id'] = 0
         messages.error(request, '帳號或密碼錯誤')  
-        return render(request, 'login.html', locals())
+        return render(request, '/login/', locals())
 
 def signup_view(request):
     return render(request, 'signup.html', locals())
@@ -220,7 +237,7 @@ def alt_member(request):
             user.save()
             print("success")
             messages.error(request, '修改成功')
-            return redirect('/index/') 
+            return redirect('/vmember/') 
     else:
         messages.error(request, '修改失敗')
         return redirect('/alt_view/')
