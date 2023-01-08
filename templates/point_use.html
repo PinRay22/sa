@@ -69,19 +69,14 @@
                         <button class="nav-item" data-bs-toggle="modal" data-bs-target="#ppModal">
                             隱私權條款
                         </button>
-                        <form>
-                            <input type="submit" class="nav-item" value="登出">
+                        <form action="/logout/" method = "POST">{% csrf_token %}
+                            <input type="submit" class="nav-item" value="登出"></input>
                         </form>
                     </div>
                 </div>
             </div>
             <p class="navbar-brand t_fontsize">碳制郎</p>
-            <!--未登入前-->
-            <a class="btn" style="padding:auto; height:50px; border:1px solid black;" href="login.html" role="button">
-                測試用<br>(登入註冊)
-            </a>
-            <!--登入後-->
-            <a class="btn_mem" href="member.html" role="button">
+            <a class="btn_mem" href="/vmember/" role="button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="black" class="bi bi-person-circle"
                     viewBox="0 0 16 16">
                     <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
@@ -248,7 +243,7 @@
     <!--底部-->
     <nav class="nav position-fixed bottom-0 bg-secondary nav_width" aria-label="Secondary navigation"
         style="background-color: #c9ad8e !important; height: 120px;">
-        <a class="nav-link active b_nav_w" aria-current="page" href="point.html">
+        <a class="nav-link b_nav_w" aria-current="page" href="/point_view/">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-p-circle"
                 viewBox="0 0 16 16">
                 <path
@@ -258,7 +253,7 @@
                 <p class="b_nav_t">點數資訊</p>
             </div>
         </a>
-        <a class="nav-link b_nav_w" href="comp.html">
+        <a class="nav-link active b_nav_w" href="/comp_view/">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-shop"
                 viewBox="0 0 16 16">
                 <path
@@ -268,7 +263,7 @@
                 <p class="b_nav_t">合作廠商</p>
             </div>
         </a>
-        <a class="nav-link b_nav_w" href="index.html">
+        <a class="nav-link b_nav_w" href="/index/">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-house-door"
                 viewBox="0 0 16 16">
                 <path
@@ -278,7 +273,7 @@
                 <p class="b_nav_t">首頁</p>
             </div>
         </a>
-        <a class="nav-link b_nav_w" href="rank.html">
+        <a class="nav-link b_nav_w" href="/rank/">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor"
                 class="bi bi-bar-chart-line" viewBox="0 0 16 16">
                 <path
@@ -288,7 +283,7 @@
                 <p class="b_nav_t">碳排排名</p>
             </div>
         </a>
-        <a class="nav-link b_nav_w" href="record.html">
+        <a class="nav-link b_nav_w" href="/record_view/">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-card-list"
                 viewBox="0 0 16 16">
                 <path
@@ -301,6 +296,13 @@
             </div>
         </a>
     </nav>
+    {% if messages %}
+    <script>
+    {% for msg in messages %}
+        alert('{{ msg.message }}');
+    {% endfor %}
+    </script>
+    {% endif %}
 </body>
 
 </html>

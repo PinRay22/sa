@@ -70,10 +70,8 @@
                         <button class="nav-item" data-bs-toggle="modal" data-bs-target="#ppModal">
                             隱私權條款
                         </button>
-                        <form>
-                            <input type="submit" class="nav-item" value="登出">
-
-                            </input>
+                        <form action="/logout/" method = "POST">{% csrf_token %}
+                            <input type="submit" class="nav-item" value="登出"></input>
                         </form>
                     </div>
                 </div>
@@ -274,7 +272,7 @@
                 </div>
             </form>
             <div class="d-grid gap-2 col-6 mx-auto">
-                <a class="btn btn-primary" id="membtn" href="member.html">取消</a>
+                <a class="btn btn-primary" id="membtn" href="/vmember/">取消</a>
             </div>
         </div>
     </div>
@@ -415,5 +413,11 @@
         changeArea(document.getElementById("area-list").selectedIndex);
     </script>
 </body>
-
+{% if messages %}
+<script>
+{% for msg in messages %}
+    alert('{{ msg.message }}');
+{% endfor %}
+</script>
+{% endif %}
 </html>

@@ -233,8 +233,9 @@
         <div class="tab-pane main_body rec_bg" id="pills-rec" role="tabpanel" aria-labelledby="pills-rec-tab">
             <p id="spendwd">消費紀錄</p>
             {% for item in items %}
-            <form action="">
-                <h5 id="spendtxt">{{item.OCmp}}</h5>
+            <form action="/rede/" method = "POST">{% csrf_token %}
+                <input type = "text" class="v_title" name = 'Cname' value = '{{item.OCmp}}'>
+                <!---<h5 id="spendtxt">{{item.OCmp}}</h5>--->
                 <input class="btn btn-primary" type="submit" value="詳細資訊" id="spendbt">
                 <h6 id="spenddate">{{item.SDATE}}</h6>
                 <hr class="rec_hr">

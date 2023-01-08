@@ -12,8 +12,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
     </script>
-    <link rel="stylesheet" href="asset/css/index.css">
-    <link rel="stylesheet" href="asset/css/basic.css">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="../static/css/basic.css">
     <title>首頁</title>
 </head>
 
@@ -69,17 +69,12 @@
                         <button class="nav-item" data-bs-toggle="modal" data-bs-target="#ppModal">
                             隱私權條款
                         </button>
-                        <form>
-                            <input type="submit" class="nav-item fade" value="登出">
-
-                            </input>
-                        </form>
                     </div>
                 </div>
             </div>
             <p class="navbar-brand t_fontsize">碳制郎</p>
             <!--登入後-->
-            <a class="btn_mem" href="login.html" role="button">
+            <a class="btn_mem" href="/login/" role="button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="black" class="bi bi-person-circle"
                     viewBox="0 0 16 16">
                     <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
@@ -107,25 +102,25 @@
                     <div class="about_mem">
                         <h5 class="about_name">10944204 林庭妤</h5>
                         <div class="about_img">
-                            <img decoding="async" src="asset/img/lin.jpg" class="aboutimg-circle">
+                            <img decoding="async" src="../static/img/lin.jpg" class="aboutimg-circle">
                         </div>
                     </div>
                     <div class="about_mem">
                         <h5 class="about_name">10944205 吳孟軒</h5>
                         <div class="about_img">
-                            <img decoding="async" src="asset/img/wu.jpg" class="aboutimg-circle">
+                            <img decoding="async" src="../static/img/wu.jpg" class="aboutimg-circle">
                         </div>
                     </div>
                     <div class="about_mem">
                         <h5 class="about_name">10944206 王靖淳</h5>
                         <div class="about_img">
-                            <img decoding="async" src="asset/img/cchun.JPG" class="aboutimg-circle">
+                            <img decoding="async" src="../static/img/cchun.JPG" class="aboutimg-circle">
                         </div>
                     </div>
                     <div class="about_mem">
                         <h5 class="about_name">10944250 陳品叡</h5>
                         <div class="about_img">
-                            <img decoding="async" src="asset/img/chen.jpg" class="aboutimg-circle">
+                            <img decoding="async" src="../static/img/chen.jpg" class="aboutimg-circle">
                         </div>
                     </div>
                 </div>
@@ -243,26 +238,26 @@
                 </div>
                 <div class="carousel-inner" style="background-color: black; height: 210px;">
                     <div class="carousel-item active">
-                        <img src="asset/img/slidead1.jpg" class="d-block w-100" alt="...">
+                        <img src="../static/img/slidead1.jpg" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
-                        <img src="asset/img/slidead2.jpg" class="d-block w-100" alt="...">
+                        <img src="../static/img/slidead2.jpg" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
-                        <img src="asset/img/slidead3.jpg" class="d-block w-100" alt="...">
+                        <img src="../static/img/slidead3.jpg" class="d-block w-100" alt="...">
                     </div>
                 </div>
             </div>
         </div>
         <div class="mid_body" style="text-align: center; margin-top:0px">
             <p style="font-size: 40px;"><b>歡迎使用碳制郎<br>請先登入</b></p><br>
-            <a href="login.html" class="btn btn-primary">前往登入</a>
+            <a href="/login/" class="btn btn-primary">前往登入</a>
         </div>
     </div>
     <!--底部-->
     <nav class="nav position-fixed bottom-0 bg-secondary nav_width fade" aria-label="Secondary navigation"
         style="background-color: #c9ad8e !important; height: 120px;">
-        <a class="nav-link b_nav_w" aria-current="page" href="point.html">
+        <a class="nav-link b_nav_w" aria-current="page" href="/login/">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-p-circle"
                 viewBox="0 0 16 16">
                 <path
@@ -272,7 +267,7 @@
                 <p class="b_nav_t">點數資訊</p>
             </div>
         </a>
-        <a class="nav-link b_nav_w" href="comp.html">
+        <a class="nav-link b_nav_w" href="/login/">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-shop"
                 viewBox="0 0 16 16">
                 <path
@@ -282,7 +277,7 @@
                 <p class="b_nav_t">合作廠商</p>
             </div>
         </a>
-        <a class="nav-link active b_nav_w" href="index.html">
+        <a class="nav-link active b_nav_w" href="/login/">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-house-door"
                 viewBox="0 0 16 16">
                 <path
@@ -292,7 +287,7 @@
                 <p class="b_nav_t">首頁</p>
             </div>
         </a>
-        <a class="nav-link b_nav_w" href="rank.html">
+        <a class="nav-link b_nav_w" href="/login/">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor"
                 class="bi bi-bar-chart-line" viewBox="0 0 16 16">
                 <path
@@ -302,7 +297,7 @@
                 <p class="b_nav_t">碳排排名</p>
             </div>
         </a>
-        <a class="nav-link b_nav_w" href="record.html">
+        <a class="nav-link b_nav_w" href="/login/">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-card-list"
                 viewBox="0 0 16 16">
                 <path
@@ -315,6 +310,13 @@
             </div>
         </a>
     </nav>
+    {% if messages %}
+        <script>
+        {% for msg in messages %}
+            alert('{{ msg.message }}');
+        {% endfor %}
+        </script>
+        {% endif %}
 </body>
 
 </html>

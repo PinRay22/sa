@@ -69,10 +69,8 @@
                         <button class="nav-item" data-bs-toggle="modal" data-bs-target="#ppModal">
                             隱私權條款
                         </button>
-                        <form>
-                            <input type="submit" class="nav-item" value="登出">
-
-                            </input>
+                        <form action="/logout/" method = "POST">{% csrf_token %}
+                            <input type="submit" class="nav-item" value="登出"></input>
                         </form>
                     </div>
                 </div>
@@ -280,7 +278,7 @@
     <!--底部-->
     <nav class="nav position-fixed bottom-0 bg-secondary nav_width" aria-label="Secondary navigation"
         style="background-color: #c9ad8e !important; height: 120px;">
-        <a class="nav-link b_nav_w" aria-current="page" href="point.html">
+        <a class="nav-link b_nav_w" aria-current="page" href="/point_view/">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-p-circle"
                 viewBox="0 0 16 16">
                 <path
@@ -290,7 +288,7 @@
                 <p class="b_nav_t">點數資訊</p>
             </div>
         </a>
-        <a class="nav-link b_nav_w" href="comp.html">
+        <a class="nav-link b_nav_w" href="/comp_view/">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-shop"
                 viewBox="0 0 16 16">
                 <path
@@ -300,7 +298,7 @@
                 <p class="b_nav_t">合作廠商</p>
             </div>
         </a>
-        <a class="nav-link b_nav_w" href="index.html">
+        <a class="nav-link b_nav_w" href="/index/">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-house-door"
                 viewBox="0 0 16 16">
                 <path
@@ -310,7 +308,7 @@
                 <p class="b_nav_t">首頁</p>
             </div>
         </a>
-        <a class="nav-link b_nav_w" href="rank.html">
+        <a class="nav-link b_nav_w" href="/rank/">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor"
                 class="bi bi-bar-chart-line" viewBox="0 0 16 16">
                 <path
@@ -320,7 +318,7 @@
                 <p class="b_nav_t">碳排排名</p>
             </div>
         </a>
-        <a class="nav-link b_nav_w" href="record.html">
+        <a class="nav-link b_nav_w" href="/record_view/">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-card-list"
                 viewBox="0 0 16 16">
                 <path
@@ -333,6 +331,13 @@
             </div>
         </a>
     </nav>
+    {% if messages %}
+    <script>
+    {% for msg in messages %}
+        alert('{{ msg.message }}');
+    {% endfor %}
+    </script>
+    {% endif %}
 </body>
 
 </html>

@@ -69,23 +69,21 @@
                         <button class="nav-item" data-bs-toggle="modal" data-bs-target="#ppModal">
                             隱私權條款
                         </button>
-                        <form>
-                            <input type="submit" class="nav-item" value="登出">
-
-                            </input>
+                        <form action="/logout/" method = "POST">{% csrf_token %}
+                            <input type="submit" class="nav-item" value="登出"></input>
                         </form>
                     </div>
                 </div>
             </div>
             <p class="navbar-brand t_fontsize">碳制郎</p>
-            <button class="btn_mem" data-bs-toggle="modal" data-bs-target="#memModal">
+            <a class="btn_mem" href="/vmember/" role="button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="black" class="bi bi-person-circle"
                     viewBox="0 0 16 16">
                     <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
                     <path fill-rule="evenodd"
                         d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
                 </svg>
-            </button>
+            </a>
         </div>
     </nav>
 
@@ -300,7 +298,7 @@
                 <p class="b_nav_t">點數資訊</p>
             </div>
         </a>
-        <a class="nav-link b_nav_w" href="/comp_view/">
+        <a class="nav-link active b_nav_w" href="/comp_view/">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-shop"
                 viewBox="0 0 16 16">
                 <path
@@ -320,7 +318,7 @@
                 <p class="b_nav_t">首頁</p>
             </div>
         </a>
-        <a class="nav-link active b_nav_w" href="/rank/">
+        <a class="nav-link b_nav_w" href="/rank/">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor"
                 class="bi bi-bar-chart-line" viewBox="0 0 16 16">
                 <path
@@ -343,6 +341,13 @@
             </div>
         </a>
     </nav>
+    {% if messages %}
+    <script>
+    {% for msg in messages %}
+        alert('{{ msg.message }}');
+    {% endfor %}
+    </script>
+    {% endif %}
     <!--地區選擇下拉選單用js-->
     <script type="text/javascript">
         var areas = ['--選擇縣市--', '新北市', '臺北市', '基隆市', '宜蘭縣', '桃園市', '新竹市', '新竹縣', '苗栗縣', '臺中市', '彰化縣', '南投縣', '雲林縣',
