@@ -41,6 +41,6 @@ urlpatterns = [
     path('logout/', views.logout ),
     path('login_p/', views.login_p ),
     path('login/', views.login_view),
+    path('activity/',views.activity_view),
     path("news/", include("news.urls")),
-    
 ]
