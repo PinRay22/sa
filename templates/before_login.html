@@ -17,7 +17,7 @@
     <title>請先登入</title>
 </head>
 
-<body>
+<body style="overflow:hidden;">
     <!--header-->
     <!--上方標題欄-->
     <nav class="navbar bg-info position-fixed top-0 nav_width" aria-label="Light offcanvas navbar" id="nav_bg"
@@ -225,8 +225,11 @@
         </div>
     </div>
     <!--header end-->
-    <div class="main_body">
-        <div class="tab-pane show main_body home_bg" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+    <div class="container1">
+        <div class="inner"></div>
+    </div>
+    <div class="main_body" style="position: absolute; top:0px; ">
+        <div class="tab-pane show main_body" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
             <div id="carouselHomeAd" class="carousel carousel-dark slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselHomeAd" data-bs-slide-to="0" class="active"
@@ -249,67 +252,11 @@
                 </div>
             </div>
         </div>
-        <div class="mid_body" style="text-align: center; margin-top:0px">
-            <p style="font-size: 40px;"><b>歡迎使用碳制郎<br>請先登入</b></p><br>
-            <a href="/login/" class="btn btn-primary" id="membtn">前往登入</a>
+        <div class="mid_body" style="text-align: center; margin-top:5%; opacity:0.8;">
+            <p style="font-size: 40px; opacity:1;"><b>歡迎使用碳制郎<br>請先登入</b></p><br>
+            <a href="login.html" class="btn btn-primary" id="membtn" style="opacity: 1;">前往登入</a>
         </div>
     </div>
-    <!--底部-->
-    <nav class="nav position-fixed bottom-0 bg-secondary nav_width fade" aria-label="Secondary navigation"
-        style="background-color: #c9ad8e !important; height: 120px;">
-        <a class="nav-link b_nav_w" aria-current="page" href="/login/">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-p-circle"
-                viewBox="0 0 16 16">
-                <path
-                    d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8Zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM5.5 4.002h2.962C10.045 4.002 11 5.104 11 6.586c0 1.494-.967 2.578-2.55 2.578H6.784V12H5.5V4.002Zm2.77 4.072c.893 0 1.419-.545 1.419-1.488s-.526-1.482-1.42-1.482H6.778v2.97H8.27Z" />
-            </svg>
-            <div>
-                <p class="b_nav_t">點數資訊</p>
-            </div>
-        </a>
-        <a class="nav-link b_nav_w" href="/login/">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-shop"
-                viewBox="0 0 16 16">
-                <path
-                    d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z" />
-            </svg>
-            <div>
-                <p class="b_nav_t">合作廠商</p>
-            </div>
-        </a>
-        <a class="nav-link active b_nav_w" href="/login/">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-house-door"
-                viewBox="0 0 16 16">
-                <path
-                    d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146ZM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5Z" />
-            </svg>
-            <div>
-                <p class="b_nav_t">首頁</p>
-            </div>
-        </a>
-        <a class="nav-link b_nav_w" href="/login/">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor"
-                class="bi bi-bar-chart-line" viewBox="0 0 16 16">
-                <path
-                    d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2zm1 12h2V2h-2v12zm-3 0V7H7v7h2zm-5 0v-3H2v3h2z" />
-            </svg>
-            <div>
-                <p class="b_nav_t">碳排排名</p>
-            </div>
-        </a>
-        <a class="nav-link b_nav_w" href="/login/">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-card-list"
-                viewBox="0 0 16 16">
-                <path
-                    d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
-                <path
-                    d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
-            </svg>
-            <div>
-                <p class="b_nav_t">消費紀錄</p>
-            </div>
-        </a>
-    </nav>
     {% if messages %}
         <script>
         {% for msg in messages %}
