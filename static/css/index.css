@@ -472,11 +472,10 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
     margin-top: 15px;
 }
 #spendtxt{
-    margin-left: 25px;
     margin-top: 30px;
 }
 #spenddate{
-    margin-left: 25px;
+    margin-left: 5px;
     color: #7B7B7B;
 }
 .rec_hr{
@@ -497,9 +496,9 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
     margin-top: 10px;
 }
 #spendbt{
+    margin-top:15px;
+    margin-right: 15px;
     float: right;
-    margin-top: -20px;
-    margin-right: 35px;
 }
 /*關於*/
 .aboutimg-circle{
