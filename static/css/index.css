@@ -10,7 +10,35 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
 .nav_width{
     width: 100%;
 } 
+.container1 {
+    font-size: 0;
+    position:relative;
+    top:0;
+    left:0;
+    width: 2000px;
+    height: 2000px;
+    overflow: hidden;
+    margin: 0;
+    padding:0;
+    transform: translate3d(0, 0, 0)
+}
+.inner {
+    width: 5760px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url('../img/bg.jpg');
+    animation: move 40s linear 0s infinite;
+    transform: translate3d(0, 0, 0);
+    z-index: 10;
+}
 
+@keyframes move {
+    100% {
+    transform: translateX(-66.6666%);
+    }
+}
 #nav_bg{
     background-color: #c9ad8e !important;
 }
@@ -273,7 +301,6 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
 .carbonbtn{
     background-color: #c9ad8e;
     border: 0;
-    height: 70px;
 }
 /*排名*/
 .dropdown-toggle {
@@ -394,13 +421,20 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
 }
 .voucher{
     width: 100%;
-    height: 115px;
+    height: 135px;
     background-color: white;
     border-radius: 10px;
     margin:10px auto;
     display: flex;
     justify-content: space-between;
     padding: 3px;
+}
+#act_back{
+    margin-top: 65px;
+    margin-left: 10px;
+    width: 30px;
+    height: 30px;
+    color: black;
 }
 .v_title{
     font-size: 20px;
@@ -442,6 +476,7 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
     margin-top: 30px;
 }
 #spenddate{
+    margin-left: 25px;
     color: #7B7B7B;
 }
 .rec_hr{
@@ -463,8 +498,8 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
 }
 #spendbt{
     float: right;
-    margin-top: 15px;
-    margin-right: 15px;
+    margin-top: -20px;
+    margin-right: 35px;
 }
 /*關於*/
 .aboutimg-circle{
