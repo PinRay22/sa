@@ -11,7 +11,6 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
     width: 100%;
 } 
 .container1 {
-    font-size: 0;
     position:relative;
     top:0;
     left:0;
@@ -31,7 +30,6 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
     background-image: url('../img/bg.jpg');
     animation: move 40s linear 0s infinite;
     transform: translate3d(0, 0, 0);
-    z-index: 10;
 }
 
 @keyframes move {
