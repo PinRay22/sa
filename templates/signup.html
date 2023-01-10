@@ -235,35 +235,32 @@
             <form action="/signup/" method = "POST">{% csrf_token %}
                 <div class="mb-3">
                     <label for="sign_id" class="col-form-label">身份證字號:</label>
-                    <input type="text" class="form-control" id="sign_id" name = 'san'>
+                    <input type="text" class="form-control" id="sign_id"  placeholder="輸入身份證字號" name = 'san' required>
                 </div>
                 <div class="mb-3">
                     <label for="sign_name" class="col-form-label">姓名:</label>
-                    <input type="text" class="form-control" id="sign_name" name = 'name'>
+                    <input type="text" class="form-control" id="sign_name" placeholder="輸入正確姓名" name = 'name' required>
                 </div>
                 <div class="mb-3">
                     <label for="sign_ph" class="col-form-label">手機號碼:</label>
-                    <input type="text" class="form-control" id="sign_ph" name = 'phone'>
+                    <input type="text" class="form-control" id="sign_ph" placeholder="輸入手機號碼" name = 'phone' required>
                 </div>
                 <div class="mb-3">
                     <label for="sign_adr" class="col-form-label">地址:</label><br>
-                    <select id="area-list" onchange="changeArea(this.selectedIndex)" class="area_drop"
-                        style="background-color: #6C6C6C; margin-top:10px;"></select>
-                    <select id="sector-list" class="area_drop"
-                        style="background-color: #6C6C6C; margin-top:10px;"></select>
-                    <input type="text" class="form-control" id="sign_adr" name = 'address'>
+                    <input type="text" class="form-control" id="sign_adr" placeholder="輸入縣市名稱" required>
+                    <input type="text" class="form-control" id="sign_adr" placeholder="輸入詳細地址" name = 'address' required style="margin-top:5px;">
                 </div>
                 <div class="mb-3">
                     <label for="sign_mail" class="col-form-label">電子信箱:</label>
-                    <input type="email" class="form-control" id="sign_mail" name = 'mail'>
+                    <input type="email" class="form-control" id="sign_mail" placeholder="輸入電子信箱" name = 'mail' required>
                 </div>
                 <div class="mb-3">
                     <label for="sign_card" class="col-form-label">信用卡卡號:</label>
-                    <input type="text" class="form-control" id="sign_card" name = 'xin'>
+                    <input type="text" class="form-control" id="sign_card" placeholder="輸入信用卡卡號(選填)" name = 'xin'>
                 </div>
                 <div class="mb-3">
                     <label for="sign_psd" class="col-form-label">密碼:</label>
-                    <input type="text" class="form-control" id="sign_psd" name = 'password'>
+                    <input type="text" class="form-control" id="sign_psd" placeholder="設定密碼" name = 'password' required>
                 </div>
                 <div class="d-grid gap-2 col-6 mx-auto">
                     <!--<input type="submit" class="btn btn-primary" id="membtn" value="獲取驗証碼">-->

@@ -247,13 +247,8 @@
                 <div class="mb-3">
                     <label for="alt_adr" class="col-form-label">修改地址:</label>
                     <!--252~255新增,要抓值-->
-                   
-                    <select id="area-list" onchange="changeArea(this.selectedIndex)" class="area_drop"
-                        style="background-color: #6C6C6C; margin-top:10px;" name = 'caddress'></select>
-                 
-                    <select id="sector-list" class="area_drop"
-                        style="background-color: #6C6C6C; margin-top:10px;"></select>
-                    <input type="text" class="form-control" id="alt_adr" value="{{Mem_address}}" name = 'address' required >
+                    <input type="text" class="form-control" id="alt_adr" value="桃園市" required>
+                    <input type="text" class="form-control" id="alt_adr" value="{{Mem_address}}" name = 'address' required style="margin-top:5px;">
                 </div>
                 <div class="mb-3">
                     <label for="alt_mail" class="col-form-label">修改電子信箱:</label>

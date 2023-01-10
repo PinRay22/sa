@@ -229,59 +229,93 @@
     <!--header end-->
     <div class="main_body">
         <div class="tab-pane main_body rank_bg" id="pills-rank" role="tabpanel" aria-labelledby="pills-rank-tab">
-            <form action="">
+            <!--
+                <form action="">
                 <select id="area-list" onchange="changeArea(this.selectedIndex)" class="area_drop"></select>
                 <select id="sector-list" class="area_drop"></select>
                 <input class="btn btn-primary" type="submit" value="搜尋" id="placebt">
             </form>
+            -->
             <form action="">
-                <table class="table table-striped" id="placetable">
-                    <thead>
-                        <tr>
-                            <th scope="col">排名</th>
-                            <th scope="col">姓名</th>
-                            <th scope="col">碳排量(t)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <input type="search" placeholder="請輸入縣市" class="rankinput">
+                <input class="btn btn-primary" type="submit" value="搜尋" id="placebt">
+            </form>
+            <table class="table table-striped" id="placetable">
+                <thead>
+                    <tr>
+                        <th scope="col">排名</th>
+                        <th scope="col">姓名</th>
+                        <th scope="col">碳排量(t)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <form action="">
                         <tr>
                             <th scope="row">1</th>
                             <td>吳OO</td>
                             <td>5.234</td>
                         </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>林OO</td>
-                            <td>5.345</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>陳OO</td>
-                            <td>5.456</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td>朴OO</td>
-                            <td>6.234</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">5</th>
-                            <td>金OO</td>
-                            <td>6.345</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">6</th>
-                            <td>田OO</td>
-                            <td>7.456</td>
-                        </tr>
+                    </form>
+                    <!--這裡開始可刪除-->
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>林OO</td>
+                        <td>5.345</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>陳OO</td>
+                        <td>5.456</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>朴OO</td>
+                        <td>6.234</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">5</th>
+                        <td>金OO</td>
+                        <td>6.345</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">6</th>
+                        <td>田OO</td>
+                        <td>7.456</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">6</th>
+                        <td>田OO</td>
+                        <td>7.456</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">6</th>
+                        <td>田OO</td>
+                        <td>7.456</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">6</th>
+                        <td>田OO</td>
+                        <td>7.456</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">6</th>
+                        <td>田OO</td>
+                        <td>7.456</td>
+                    </tr>
+                    <!--刪到這裡結束-->
+                    <form>
                         <tr class="table-primary">
-                            <th scope="row">76</th>
-                            <td>王OO</td>
-                            <td>10.767</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </form>
+                        <th scope="col" colspan="2" style="text-align: left;">您所在的地區:桃園市</th>
+                        <th scope="col"></th>
+                    </tr>
+                    <tr class="table-primary">
+                        <th scope="row">76</th>
+                        <td>王OO</td>
+                        <td>10.767</td>
+                    </tr>
+                    </form>
+                </tbody>
+            </table>
         </div>
     </div>
 
