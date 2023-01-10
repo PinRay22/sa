@@ -11,6 +11,7 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
     width: 100%;
 } 
 .container1 {
+    font-size: 0;
     position:relative;
     top:0;
     left:0;
@@ -30,6 +31,7 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
     background-image: url('../img/bg.jpg');
     animation: move 40s linear 0s infinite;
     transform: translate3d(0, 0, 0);
+    z-index: 10;
 }
 
 @keyframes move {
@@ -310,6 +312,7 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
     --bs-btn-line-height: 1.1;
     margin-left: 10px;
     margin-top: 0px;
+    height: 35px;
 }
 .crs_home{
     z-index: 1000;
@@ -317,6 +320,12 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
 }
 #placetable{
     text-align: center;
+}
+.rankinput{
+    margin: 30px 5px 15px 30px;
+    padding: 5px;
+    border-radius: 10px;
+    height: 35px;
 }
 .area_drop{
     width: 120px;
@@ -470,10 +479,11 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
     margin-top: 15px;
 }
 #spendtxt{
+    margin-left: 25px;
     margin-top: 30px;
 }
 #spenddate{
-    margin-left: 5px;
+    margin-left: 25px;
     color: #7B7B7B;
 }
 .rec_hr{
@@ -494,9 +504,9 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
     margin-top: 10px;
 }
 #spendbt{
-    margin-top:15px;
-    margin-right: 15px;
     float: right;
+    margin-top: -20px;
+    margin-right: 35px;
 }
 /*關於*/
 .aboutimg-circle{
