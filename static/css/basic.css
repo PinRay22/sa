@@ -8,6 +8,7 @@ html::-webkit-scrollbar,body::-webkit-scrollbar{
     display: none;
 }
 html,body{
+    font-family: "ZiTiGuanJiaFangSongTi-2" !important;
     margin:0;
     padding: 0;
     height: 100%;
@@ -15,4 +16,14 @@ html,body{
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
     background-color: #d4d2d2;
+}
+a,input,p,h1,h2,h3,h4,h5,h6,button{
+    font-family: "ZiTiGuanJiaFangSongTi-2" !important;
+    color: black;
+}
+@font-face {
+    font-family: "ZiTiGuanJiaFangSongTi-2";
+    src: url('../font/ZiTiGuanJiaFangSongTi-2.ttf') format("truetype"),
+        url('../font/ZiTiGuanJiaFangSongTi-2.woff') format("woff"),
+        url('../font/ZiTiGuanJiaFangSongTi-2.eot') format("embedded-opentype");
 }
