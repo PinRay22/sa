@@ -19,7 +19,7 @@ class member(models.Model):
     MemCity = models.CharField('會員城市', max_length=100, null=False)
     MemAddr = models.CharField('會員地址', max_length=100, null=False)
     Memmail = models.CharField('會員電郵', max_length=100, null=False)
-    Memxin = models.CharField('會員信用卡號', max_length=100, null=False)
+    Memxin = models.CharField('會員信用卡號', max_length=100)
     MCarbon = models.FloatField('碳排量', null=True)
     MemPoint = models.IntegerField('碳權點數', null=True)
     MemPic = models.CharField('頭貼', max_length=100, null=True)
