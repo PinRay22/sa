@@ -76,8 +76,9 @@
                     </div>
                 </div>
             </div>
-            <p class="navbar-brand t_fontsize">碳制郎</p>
-            
+            <div>
+                <img src="../static/img/logo.jpg" style="width: 172.5px; height: 63px; margin-bottom: 10px;">
+            </div>
             <!--登入後-->
             {% if san != 0 %}
             <a class="btn_mem" href="/vmember/" role="button">
@@ -118,7 +119,7 @@
                         </div>
                     </div>
                     <div class="about_mem">
-                        <h5 class="about_name">10944205 吳孟軒</h5>
+                        <h5 class="about_name">10944205 吴孟軒</h5>
                         <div class="about_img">
                             <img decoding="async" src="../static/img/wu.jpg" class="aboutimg-circle">
                         </div>
@@ -175,7 +176,7 @@
                             <input type="text" class="form-control" id="cs_title">
                         </div>
                         <div class="mb-3">
-                            <label for="message-text" class="col-form-label">內文:</label>
+                            <label for="message-text" class="col-form-label">内文:</label>
                             <textarea class="form-control" id="message-text"></textarea>
                         </div>
                         <div class="d-grid gap-2 col-6 mx-auto">
@@ -243,14 +244,14 @@
             <div>
                 <div class="mem_img">
                     <img decoding="async" src="{{Mem_pic}}" class="img-circle">
-                    <a href="/vmem_photo/" class="btn btn-primary m_p_c" id="membtn">更換</a>
+                    <a href="/vmem_photo/" class="btn btn-primary m_p_c" id="membtn">更改頭貼</a>
                 </div>
                 <div style="margin-top: 60px;">
                     <h4><b>會員基本資料</b></h4>
                     <h5>身份證字號: {{Mem_sanfan}}</h5>
                     <h5>姓名: {{Mem_name}}</h5>
                     <h5>手機號碼: {{Mem_phone}}</h5>
-                    <h5>地址: {{Mem_address}}</h5>
+                    <h5>地址:{{Mem_city}} {{Mem_address}}</h5>
                     <h5>電子信箱: {{Mem_mail}}</h5>
                     <h5>信用卡卡號：{{Mem_xin}}</h5>
                     <h5>密碼: {{Mem_password}}</h5>
@@ -315,7 +316,7 @@
                     d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
             </svg>
             <div>
-                <p class="b_nav_t">消費紀錄</p>
+                <p class="b_nav_t">消費紀録</p>
             </div>
         </a>
     </nav>

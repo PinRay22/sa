@@ -14,7 +14,7 @@
     </script>
     <link rel="stylesheet" href="../static/css/index.css">
     <link rel="stylesheet" href="../static/css/basic.css">
-    <title>點數兌換確認</title>
+    <title>點數兑换確認</title>
 </head>
 
 <body>
@@ -75,8 +75,9 @@
                     </div>
                 </div>
             </div>
-            <p class="navbar-brand t_fontsize">碳制郎</p>
-            
+            <div>
+                <img src="../static/img/logo.jpg" style="width: 172.5px; height: 63px; margin-bottom: 10px;">
+            </div>
             <a class="btn_mem" href="/vmember/" role="button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="black" class="bi bi-person-circle"
                     viewBox="0 0 16 16">
@@ -109,7 +110,7 @@
                         </div>
                     </div>
                     <div class="about_mem">
-                        <h5 class="about_name">10944205 吳孟軒</h5>
+                        <h5 class="about_name">10944205 吴孟軒</h5>
                         <div class="about_img">
                             <img decoding="async" src="../static/img/wu.jpg" class="aboutimg-circle">
                         </div>
@@ -166,7 +167,7 @@
                             <input type="text" class="form-control" id="cs_title">
                         </div>
                         <div class="mb-3">
-                            <label for="message-text" class="col-form-label">內文:</label>
+                            <label for="message-text" class="col-form-label">内文:</label>
                             <textarea class="form-control" id="message-text"></textarea>
                         </div>
                         <div class="d-grid gap-2 col-6 mx-auto">
@@ -233,14 +234,14 @@
         <div class="mid_body">
             
             <form action="/exchange/"method = "POST" >{% csrf_token %}
-                <p class="check_exc_t">請確認兌換服務內容：</p>
+                <p class="check_exc_t">請確認兑换服務内容：</p>
                 
                 <input type = "text" class="v_title" name = 'SerName' value = '{{ser.Sname}}' readonly style="background:#c5b5b5">
                 <p class="v_price">所需點數:{{ser.SPoint}}</p>
-                <p class=" v_dtl">使用期限:兌換後{{ser.SDDline}}日內</p>
+                <p class=" v_dtl">使用期限:兑换後{{ser.SDDline}}日内</p>
                 <div class="d-grid gap-2">
-                    <input type="submit" value="確認兌換" class="btn btn-primary" id="membtn"></input>
-                    <a href="/point_view/" role="button" class="btn btn-primary" id="membtn">取消兌換</a>
+                    <input type="submit" value="確認兑换" class="btn btn-primary" id="membtn"></input>
+                    <a href="/point_view/" role="button" class="btn btn-primary" id="membtn">取消兑换</a>
                 </div>
             </form>
         </div>
@@ -297,7 +298,7 @@
                     d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
             </svg>
             <div>
-                <p class="b_nav_t">消費紀錄</p>
+                <p class="b_nav_t">消費紀録</p>
             </div>
         </a>
     </nav>

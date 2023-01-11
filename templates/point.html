@@ -75,7 +75,9 @@
                     </div>
                 </div>
             </div>
-            <p class="navbar-brand t_fontsize">碳制郎</p>
+            <div>
+                <img src="../static/img/logo.jpg" style="width: 172.5px; height: 63px; margin-bottom: 10px;">
+            </div>
             <a class="btn_mem" href="/vmember/" role="button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="black" class="bi bi-person-circle"
                     viewBox="0 0 16 16">
@@ -107,7 +109,7 @@
                         </div>
                     </div>
                     <div class="about_mem">
-                        <h5 class="about_name">10944205 吳孟軒</h5>
+                        <h5 class="about_name">10944205 吴孟軒</h5>
                         <div class="about_img">
                             <img decoding="async" src="../static/img/wu.jpg" class="aboutimg-circle">
                         </div>
@@ -164,7 +166,7 @@
                             <input type="text" class="form-control" id="cs_title">
                         </div>
                         <div class="mb-3">
-                            <label for="message-text" class="col-form-label">內文:</label>
+                            <label for="message-text" class="col-form-label">内文:</label>
                             <textarea class="form-control" id="message-text"></textarea>
                         </div>
                         <div class="d-grid gap-2 col-6 mx-auto">
@@ -238,14 +240,14 @@
             </div>
             <div class="btn_wrap">
                 <button class="btn btn-primary pnt_rec_btn" data-bs-toggle="modal"
-                    data-bs-target="#pntrecModal">點數增減紀錄</button>
+                    data-bs-target="#pntrecModal">點數增减紀録</button>
             </div>
             <div class="wrap_pnt">
                 <nav>
                     <div class="nav nav-tabs pnt_tab nav-pills" id="nav-tab" role="tablist">
                         <button class="nav-link active pnt_tab_btn" id="pnt-exc-tab" data-bs-toggle="tab"
                             data-bs-target="#pnt-exc" type="button" role="tab" aria-controls="pnt-exc"
-                            aria-selected="true">點數兌換</button>
+                            aria-selected="true">點數兑换</button>
                         <button class="nav-link pnt_tab_btn" id="pnt_svc-tab" data-bs-toggle="tab"
                             data-bs-target="#pnt_svc" type="button" role="tab" aria-controls="pnt_svc"
                             aria-selected="false">可用服務</button>
@@ -267,11 +269,11 @@
                                             <input type = "text" class="v_title" name = 'name' value = '{{ser.Sname}}'>
                                             <p class="v_price">所需點數:{{ser.SPoint}}</p>
                                             <p class="v_price">碳排:</p>
-                                            <p class=" v_dtl">使用期限:兌換後{{ser.SDDline}}日內</p>
+                                            <p class=" v_dtl">使用期限:兑换後{{ser.SDDline}}日内</p>
                                         </div>
                                         <div class="wrap_pexc">
                                             <input type="submit" class="btn btn-primary pnt_exchange"
-                                                value="兌換"></input>
+                                                value="兑换"></input>
                                         </div>
                                     </div>
                                 </form>
@@ -293,11 +295,11 @@
                                             <input type = "text" class="v_title" name = 'name' value = '{{ser.Sname}}'>
                                             <p class="v_price">所需點數:{{ser.SPoint}}</p>
                                             <p class="v_price">碳排:</p>
-                                            <p class=" v_dtl">使用期限:兌換後{{ser.SDDline}}日內</p>
+                                            <p class=" v_dtl">使用期限:兑换後{{ser.SDDline}}日内</p>
                                         </div>
                                         <div class="wrap_pexc">
                                             <input type="submit" class="btn btn-primary pnt_exchange"
-                                                value="兌換"></input>
+                                                value="兑换"></input>
                                         </div>
                                     </div>
                                 </form>
@@ -319,11 +321,11 @@
                                             <input type = "text" class="v_title" name = 'name' value = '{{ser.Sname}}'>
                                             <p class="v_price">所需點數:{{ser.SPoint}}</p>
                                             <p class="v_price">碳排:</p>
-                                            <p class=" v_dtl">使用期限:兌換後{{ser.SDDline}}日內</p>
+                                            <p class=" v_dtl">使用期限:兑换後{{ser.SDDline}}日内</p>
                                         </div>
                                         <div class="wrap_pexc">
                                             <input type="submit" class="btn btn-primary pnt_exchange"
-                                                value="兌換"></input>
+                                                value="兑换"></input>
                                         </div>
                                     </div>
                                 </form>
@@ -345,11 +347,11 @@
                                             <input type = "text" class="v_title" name = 'name' value = '{{ser.Sname}}'>
                                             <p class="v_price">所需點數:{{ser.SPoint}}</p>
                                             <p class="v_price">碳排:</p>
-                                            <p class=" v_dtl">使用期限:兌換後{{ser.SDDline}}日內</p>
+                                            <p class=" v_dtl">使用期限:兑换後{{ser.SDDline}}日内</p>
                                         </div>
                                         <div class="wrap_pexc">
                                             <input type="submit" class="btn btn-primary pnt_exchange"
-                                                value="兌換"></input>
+                                                value="兑换"></input>
                                         </div>
                                     </div>
                                 </form>
@@ -371,11 +373,11 @@
                                             <input type = "text" class="v_title" name = 'name' value = '{{ser.Sname}}'>
                                             <p class="v_price">所需點數:{{ser.SPoint}}</p>
                                             <p class="v_price">碳排:</p>
-                                            <p class=" v_dtl">使用期限:兌換後{{ser.SDDline}}日內</p>
+                                            <p class=" v_dtl">使用期限:兑换後{{ser.SDDline}}日内</p>
                                         </div>
                                         <div class="wrap_pexc">
                                             <input type="submit" class="btn btn-primary pnt_exchange"
-                                                value="兌換"></input>
+                                                value="兑换"></input>
                                         </div>
                                     </div>
                                 </form>
@@ -408,7 +410,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="pntrecModalLabel">點數增減紀錄</h3>
+                    <h3 class="modal-title" id="pntrecModalLabel">點數增减紀録</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -416,7 +418,7 @@
                     <form>
                         <div>
                             <p>日期：{{user.PDATE}}</p>
-                            <p>點數增減：{{user.PChange}}{{user.PPoint}}</p>
+                            <p>點數增减：{{user.PChange}}{{user.PPoint}}</p>
                             <p>說明：{{user.PPS}}</p>
                         </div>
                         <hr>
@@ -480,7 +482,7 @@
                     d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
             </svg>
             <div>
-                <p class="b_nav_t">消費紀錄</p>
+                <p class="b_nav_t">消費紀録</p>
             </div>
         </a>
     </nav>
