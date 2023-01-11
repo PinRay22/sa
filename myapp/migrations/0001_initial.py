@@ -19,6 +19,7 @@ class Migration(migrations.Migration):
                 ('MemPh', models.CharField(max_length=50, verbose_name='會員電話')),
                 ('MemPW', models.CharField(max_length=100, verbose_name='會員密碼')),
                 ('Memsanfan', models.CharField(max_length=100, verbose_name='會員身分證')),
+                ('MemCity', models.CharField(max_length=100, verbose_name='會員城市')),
                 ('MemAddr', models.CharField(max_length=100, verbose_name='會員地址')),
                 ('Memmail', models.CharField(max_length=100, verbose_name='會員電郵')),
                 ('Memxin', models.CharField(max_length=100, verbose_name='會員信用卡號')),

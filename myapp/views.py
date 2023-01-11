@@ -104,16 +104,23 @@ def index(request):
 def login_view(request):
     return render(request, 'login.html', locals())
 
+
 def activity_view(request):
     return render(request, 'activity.html', locals())
-    
+
+
 def vmem_photo(request):
     return render(request, 'mem_photo.html', locals())
 
 
 def rank_view(request):
     san = request.session.get('session_id')
+    print(san)
+    user = member.objects.get(Memsanfan=san)
     if san != 0 and san is not None:
+        Mem_city = user.MemCity
+        Mem_CB = user.MCarbon
+        Mem_name = user.MemName
         return render(request, 'rank.html', locals())
     else:
         messages.error(request, '您尚未登入，請先登入')
@@ -177,6 +184,7 @@ def member_view(request):
         Mem_name = user.MemName
         Mem_phone = user.MemPh
         Mem_password = user.MemPW
+        Mem_city = user.MemCity
         Mem_address = user.MemAddr
         Mem_mail = user.Memmail
         Mem_xin = user.Memxin
@@ -219,6 +227,7 @@ def alt_view(request):
     Mem_name = user.MemName
     Mem_phone = user.MemPh
     Mem_password = user.MemPW
+    Mem_city = user.MemCity
     Mem_address = user.MemAddr
     Mem_mail = user.Memmail
     Mem_xin = user.Memxin
@@ -233,7 +242,8 @@ def alt_member(request):
         tName = form['name']
         tPh = form['phone']
         tPW = form['password']
-        tAddr = form['caddress']
+        tCity = form['city']
+        tAddr = form['address']
         tmail = form['mail']
         txin = form['xin']
         user = member.objects.get(Memsanfan=memsan)
@@ -242,6 +252,7 @@ def alt_member(request):
             user.MemPh = tPh
             user.MemPW = tPW
             user.Memmail = tmail
+            user.MemCity = tCity
             user.MemAddr = tAddr
             user.Memxin = txin
             user.save()
@@ -256,24 +267,24 @@ def alt_member(request):
 def signup(request):
     if request.method == 'POST':
         form = request.POST
-        tMemID=form['san']
-        tMemName=form['name']
+        tMemID = form['san']
+        tMemName = form['name']
         tMemPh = form['phone']
         tMemPW = form['password']
         tMemsanfan = form['san']
+        tMemCity = form['city']
         tMemAddr = form['address']
         tMemmail = form['mail']
         tMemxin = form['xin']
-        newmember = member( MemID = tMemID, 
-        MemName = tMemName, MemPh = tMemPh, 
-        MemPW= tMemPW, Memsanfan = tMemsanfan, 
-        MemAddr = tMemAddr, Memmail = tMemmail, 
-        Memxin = tMemxin, MCarbon = 0, MemPoint = 0
-        ,MemPic = '../static/img/mem_pic1.jpg')
+        newmember = member(MemID=tMemID,
+                           MemName=tMemName, MemPh=tMemPh,
+                           MemPW=tMemPW, Memsanfan=tMemsanfan, MemCity=tMemCity,
+                           MemAddr=tMemAddr, Memmail=tMemmail,
+                           Memxin=tMemxin, MCarbon=0, MemPoint=0, MemPic='../static/img/mem_pic1.jpg')
         newmember.save()
         print("success")
         messages.error(request, '註冊成功')
-        return HttpResponseRedirect("/login/") #要改  /index#loginModal/沒屁用
+        return HttpResponseRedirect("/login/")  # 要改  /index#loginModal/沒屁用
     else:
         messages.error(request, '註冊失敗')
         return HttpResponseRedirect('/signup_view/')
