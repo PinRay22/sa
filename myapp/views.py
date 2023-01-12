@@ -126,7 +126,6 @@ def rank_view(request):
         messages.error(request, '您尚未登入，請先登入')
         return HttpResponseRedirect("/login/")
 
-
 def comp_view(request):
     san = request.session.get('session_id')
     if san != 0 and san is not None:
@@ -174,6 +173,19 @@ def exchange(request):
     messages.error(request, '兌換成功')
     return HttpResponseRedirect("/point_view/")
 
+
+def changecb(request):
+    san = request.session.get('session_id')
+    user = member.objects.get(Memsanfan=san)
+    if request.method == 'POST':
+        form = request.POST
+        plus = form['plusnum']
+        minus = form['minusnum']
+        memCarbon = user.MCarbon
+        
+        member.objects.filter(Memsanfan=san).update(MCarbon=(memCarbon - float(minus)+ float(plus)))
+        messages.error(request, '修改成功')
+        return render(request, 'activity.html', locals())
 
 def member_view(request):
     san = request.session.get('session_id')
@@ -233,6 +245,7 @@ def alt_view(request):
     Mem_xin = user.Memxin
     Mem_point = user.MemPoint
     return render(request, 'alt_member.html', locals())
+
 
 
 def alt_member(request):
