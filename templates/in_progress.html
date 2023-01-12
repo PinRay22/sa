@@ -15,7 +15,7 @@
     </script>
     <link rel="stylesheet" href="../static/css/index.css">
     <link rel="stylesheet" href="../static/css/basic.css">
-    <title>任務頁面</title>
+    <title>任務進行中</title>
 </head>
 
 <body>
@@ -231,7 +231,7 @@
     </div>
     <!--header end-->
     <div class="main_body">
-        <a href="/index/" class="btn_mem" role="button">
+        <a href="/activity/" class="btn_mem" role="button">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-chevron-left" id="act_back" viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
@@ -239,13 +239,16 @@
             </svg>
         </a>
         <div class="mid_body" style="margin-bottom: 30px; margin-top:40px;">
-            <p class="check_exc_t">每日任務</p>
-            <form action="/in_progress/" method="">
-                <div class="missions">
-                <p class="mis_name">每日任務一</p>
-                <input type="submit" class="misbtn btn btn-primary" id="membtn" value="開始任務">
-                </div>
-            </form>
+            <p class="check_exc_t">任務進行中...</p>
+            <div style="text-align:center;">
+                <form action="" method="">
+                    <p class="mis_ing">進行中任務：每日任務一</p>
+                    <div class="rotateimg">
+                        <img src="../static/img/loading.png">
+                    </div>
+                    <input type="submit" class="btn btn-primary misbtnc" id="membtn" value="結束任務">
+                </form>
+            </div>
         </div>
     </div>
     <!--底部-->

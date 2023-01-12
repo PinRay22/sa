@@ -296,11 +296,53 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
 #mis_word{
     float: right;
     margin-top: 5px;
-    color: #7B7B7B;
+    color: #383737;
 }
 .carbonbtn{
     background-color: #c9ad8e;
     border: 0;
+}
+.missions{
+    width: 90%;
+    height: 70px;
+    background-color: white;
+    border-radius: 10px;
+    margin:10px auto 0;
+}
+.mis_name{
+    float: left;
+    font-size: 24px;
+    margin-left: 10px;
+    margin-top:18px;
+}
+.misbtn{
+    float: right;
+    font-size: 16px;
+    margin-right: 15px;
+    margin-top:16px;
+}
+.mis_ing{
+    font-size: 20px;
+}
+.misbtnc{
+    margin:10px auto;
+}
+.rotateimg{
+    width:150px;
+    height: 150px;
+    margin: 10px auto;
+}
+.rotateimg>img{
+    width:100%;
+    height: 100%;
+    animation:turnimg 8s linear infinite;
+    position: relative;
+    top:0;
+    left: 0;
+}
+@keyframes turnimg{
+    0%{transform: rotate(360deg);}
+    100%{transform: rotate(0deg);}
 }
 /*排名*/
 .dropdown-toggle {
@@ -469,8 +511,7 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
     margin: 5px;
 }
 .check_exc_t{
-    font-size: 22px;
-    
+    font-size: 30px;
 }
 /*消費紀錄*/
 #spendwd{
