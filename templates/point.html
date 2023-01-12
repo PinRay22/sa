@@ -268,7 +268,7 @@
                                         <div>
                                             <input type = "text" class="v_title" name = 'name' value = '{{ser.Sname}}'>
                                             <p class="v_price">所需點數:{{ser.SPoint}}</p>
-                                            <p class="v_price">碳排:</p>
+                                            <p class="v_price">碳排:{{ser.SCarbon}}</p>
                                             <p class=" v_dtl">使用期限:兑换後{{ser.SDDline}}日内</p>
                                         </div>
                                         <div class="wrap_pexc">
@@ -294,7 +294,7 @@
                                             <!--<input type="text" class="v_title" value="" readonly>-->
                                             <input type = "text" class="v_title" name = 'name' value = '{{ser.Sname}}'>
                                             <p class="v_price">所需點數:{{ser.SPoint}}</p>
-                                            <p class="v_price">碳排:</p>
+                                            <p class="v_price">碳排:{{ser.SCarbon}}</p>
                                             <p class=" v_dtl">使用期限:兑换後{{ser.SDDline}}日内</p>
                                         </div>
                                         <div class="wrap_pexc">
@@ -320,7 +320,7 @@
                                             <!--<input type="text" class="v_title" value="" readonly>-->
                                             <input type = "text" class="v_title" name = 'name' value = '{{ser.Sname}}'>
                                             <p class="v_price">所需點數:{{ser.SPoint}}</p>
-                                            <p class="v_price">碳排:</p>
+                                            <p class="v_price">碳排:{{ser.SCarbon}}</p>
                                             <p class=" v_dtl">使用期限:兑换後{{ser.SDDline}}日内</p>
                                         </div>
                                         <div class="wrap_pexc">
@@ -346,7 +346,7 @@
                                             <!--<input type="text" class="v_title" value="" readonly>-->
                                             <input type = "text" class="v_title" name = 'name' value = '{{ser.Sname}}'>
                                             <p class="v_price">所需點數:{{ser.SPoint}}</p>
-                                            <p class="v_price">碳排:</p>
+                                            <p class="v_price">碳排:{{ser.SCarbon}}</p>
                                             <p class=" v_dtl">使用期限:兑换後{{ser.SDDline}}日内</p>
                                         </div>
                                         <div class="wrap_pexc">
@@ -372,7 +372,7 @@
                                             <!--<input type="text" class="v_title" value="" readonly>-->
                                             <input type = "text" class="v_title" name = 'name' value = '{{ser.Sname}}'>
                                             <p class="v_price">所需點數:{{ser.SPoint}}</p>
-                                            <p class="v_price">碳排:</p>
+                                            <p class="v_price">所需碳排:{{ser.SCarbon}}</p>
                                             <p class=" v_dtl">使用期限:兑换後{{ser.SDDline}}日内</p>
                                         </div>
                                         <div class="wrap_pexc">
@@ -387,10 +387,11 @@
                     </div>
                     <div class="tab-pane fade" id="pnt_svc" role="tabpanel" aria-labelledby="pnt_svc-tab">
                         {% for ex in exs %}
-                        <form action="/delete/" method = "POST">{% csrf_token %}
+                        <form action="/use_view/" method = "POST">{% csrf_token %}
                             <div class="voucher">
                                 <div>
                                     <input type="text" class="v_title" value="{{ex.Ename}}" name = 'dname' readonly>
+                                    <p class="v_price">所需碳排:{{ex.ECarbon}}</p>
                                     <p class=" v_dtl">使用期限:剩餘{{ex.EDDline}}日</p>
                                 </div>
                                 <div class="wrap_pexc">

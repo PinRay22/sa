@@ -238,7 +238,7 @@
                 <input class="btn btn-primary" type="submit" value="搜尋" id="placebt">
             </form>
             -->
-            <form action="">
+            <form action="/frank/" method = "POST" >{% csrf_token %}
                 <input type="search" placeholder="請輸入縣市" class="rankinput" name='inputCity' required>
                 <input class="btn btn-primary" type="submit" value="搜尋" id="placebt">
             </form>
@@ -251,71 +251,40 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <form action="">
+                    <!---<form action="">
                         <tr>
                             <th scope="row">1</th>
                             <td>吴OO</td>
                             <td>5.234</td>
                         </tr>
-                    </form>
+                    </form>--->
                     <!--這裡開始可刪除-->
+                    {% for data in mydata %}
                     <tr>
-                        <th scope="row">2</th>
-                        <td>林OO</td>
-                        <td>5.345</td>
+                        <th scope="row">{{forloop.counter}}</th>
+                        <td>{{data.MemName}}</td>
+                        <td>{{data.MCarbon}}</td>
                     </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>陳OO</td>
-                        <td>5.456</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">4</th>
-                        <td>朴OO</td>
-                        <td>6.234</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">5</th>
-                        <td>金OO</td>
-                        <td>6.345</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">6</th>
-                        <td>田OO</td>
-                        <td>7.456</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">6</th>
-                        <td>田OO</td>
-                        <td>7.456</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">6</th>
-                        <td>田OO</td>
-                        <td>7.456</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">6</th>
-                        <td>田OO</td>
-                        <td>7.456</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">6</th>
-                        <td>田OO</td>
-                        <td>7.456</td>
-                    </tr>
+                    {% endfor %}
+                    
                     <!--刪到這裡結束-->
+                    {% for data in mydata %}
+                    {% if data.MemName == Mem_name %}
                     <form>
                         <tr class="table-primary">
                         <th scope="col" colspan="2" style="text-align: left;">您所在的地區:{{Mem_city}}</th>
                         <th scope="col"></th>
                     </tr>
+                    
                     <tr class="table-primary">
-                        <th scope="row">76</th>
+                        <th scope="row">{{forloop.counter}}</th>
                         <td>{{Mem_name}}</td>
                         <td>{{Mem_CB}}</td>
                     </tr>
                     </form>
+                    
+                    {% endif %} 
+                    {% endfor %}
                 </tbody>
             </table>
         </div>
