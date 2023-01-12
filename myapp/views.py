@@ -10,9 +10,32 @@ from systemanalyst import settings
 from django.template.loader import render_to_string
 from django.contrib.sessions.models import Session
 from jinja2 import Environment, FileSystemLoader
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+import smtplib
+
+#timmmme
 now = timezone.now
 now = datetime.datetime.now()
 
+
+#email初始格式
+content = MIMEMultipart()  #建立MIMEMultipart物件
+content["subject"] = "您的碳制郎安全密碼驗證"  #郵件標題
+content["from"] = "pydemo123@gmail.com"  #寄件者
+content["to"] = "hatori1129ckmia@gmail.com" #收件者
+content.attach(MIMEText("請使用密碼以驗證簽署者身份\n\n   您必須在十分鐘內輸入以下安全密碼，\n   以簽署由碳制郎股份有限公司發送給您的。\n\t\t您的驗證碼： 852 416 \n   你沒有提出申請嗎？\n   若你並未提出此申請，請忽略此信。若重複收到此信，請注意帳號安全或聯絡客服人員。\n   有任何疑問請聯絡客服，當然也歡迎你註冊專屬自己的碳制郎帳號！\n" ))  #郵件內容
+
+def send_email():
+    with smtplib.SMTP(host="smtp.gmail.com", port="587") as smtp:  # 設定SMTP伺服器
+        try:
+            smtp.ehlo()  # 驗證SMTP伺服器
+            smtp.starttls()  # 建立加密傳輸
+            smtp.login("pinray544513@gmail.com", "cqjmnljocygiqqvk")  # 登入寄件者gmail
+            smtp.send_message(content)  # 寄送郵件
+            print("Complete!")
+        except Exception as e:
+            print("Error message: ", e)
 
 def insert(request):
     order.MemID = 1
@@ -102,18 +125,31 @@ def index(request):
     print(san)
     items = Volunteer.objects.all()
     user = member.objects.get(Memsanfan=san)
+    cks = Volunteer.objects.all()
+    
     return render(request, 'index.html', locals())
 
 
 def login_view(request):
     return render(request, 'login.html', locals())
 
-
+#任務畫面
 def activity_view(request):
+    items = Volunteer.objects.all()
     return render(request, 'activity.html', locals())
 
+#開始任務
 def in_progress_view(request):
+    name = request.POST.get('vname', '')
+    items = Volunteer.objects.filter( Vname = name )
     return render(request, 'in_progress.html', locals())
+
+#確認任務
+def check_mission(request):
+    name = request.POST.get('vname', '')
+    Volunteer.objects.filter( Vname = name ).update( VCheck = True )
+    print("adadadadadadadadad")
+    return HttpResponseRedirect("/index/")
 
 def vmem_photo(request):
     return render(request, 'mem_photo.html', locals())

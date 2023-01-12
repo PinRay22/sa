@@ -77,6 +77,7 @@ class Volunteer(models.Model):
     Vname = models.CharField('服務', max_length=100, null=False)
     VCarbon = models.IntegerField('碳排', null=False)
     VCmp = models.CharField('合作廠商', max_length=100)
+    VCheck = models.BooleanField('完成確認')
 
 
 class History(models.Model):
