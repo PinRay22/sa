@@ -33,7 +33,11 @@ def pe_view(request):
     sname = request.POST.get('name', '')
     ser = Service.objects.get(Sname=sname)
     return render(request, 'point_exc.html', locals())
-
+    
+def use_view(request):
+    sname = request.POST.get('dname', '')
+    eer = Exchanged.objects.get( Ename = sname )
+    return render(request, 'point_use.html', locals())
 
 def acti_p(request):
     san = request.session.get('session_id')
@@ -112,15 +116,29 @@ def activity_view(request):
 def vmem_photo(request):
     return render(request, 'mem_photo.html', locals())
 
+def rank(request):
+    san = request.session.get('session_id')
+    user = member.objects.get(Memsanfan=san)
+    Mem_city = user.MemCity
+    Mem_CB = user.MCarbon
+    Mem_name = user.MemName
+    fcity = request.POST.get('inputCity', '')
+    if fcity is not None :
+        mydata = member.objects.filter( MemCity = fcity ).order_by('MCarbon').values()
+        return render(request, 'rank.html', locals())
+    else :
+        messages.error(request, '查無資料喔')
+        return HttpResponseRedirect("/rank/")
 
 def rank_view(request):
     san = request.session.get('session_id')
     print(san)
-    user = member.objects.get(Memsanfan=san)
+    user = member.objects.get( Memsanfan = san )
     if san != 0 and san is not None:
         Mem_city = user.MemCity
         Mem_CB = user.MCarbon
         Mem_name = user.MemName
+        mydata = member.objects.filter( MemCity = Mem_city ).order_by('MCarbon').values()
         return render(request, 'rank.html', locals())
     else:
         messages.error(request, '您尚未登入，請先登入')
@@ -143,9 +161,15 @@ def logout(request):
 
 
 def delete(request):
-    sname = request.POST.get('dname', '')
-    dd = Exchanged.objects.get(Ename=sname)
+    san = request.session.get('session_id')
+    sname = request.POST.get('eerName', '')
+    dd = Exchanged.objects.get( Ename = sname )
     dd.delete()
+    ss = Service.objects.get( Sname = sname )
+    car =ss.SCarbon
+    user = member.objects.get(Memsanfan=san)
+    user.MCarbon = user.MCarbon + car
+    user.save()
     messages.error(request, '用爽沒')
     return HttpResponseRedirect("/point_view/")
 
@@ -160,20 +184,30 @@ def exchange(request):
     Ser = Service.objects.get(Sname=sname)
     ddate = int(Ser.SDDline) - 1
     PointCost = Ser.SPoint
+    Scar = Ser.SCarbon
     if Mpoint < PointCost:
         messages.error(request, '您的點數需大於兌換點數！')
         return HttpResponseRedirect("/point_view/")
     member.objects.filter(Memsanfan=san).update(MemPoint=(Mpoint - PointCost))
-    pp = point(PID='0', Memsanfan=san, PChange='-', PPS=sname,
-               PPoint=PointCost, PCmp='0', PDATE=now)
+    pp = point(PID='0', Memsanfan=san, PChange='-', PPS=sname, PCarbon = Scar,
+               PPoint=PointCost, PCmp='0', PDATE=now, )
     pp.save()
-    ee = Exchanged(EID='0', Memsanfan=san, Ename=sname,
+    ee = Exchanged(EID='0', Memsanfan=san, Ename=sname, ECarbon = Scar,
                    EPoint=PointCost, ECmp='0', EDDline=ddate, EDATE=now)
     ee.save()
     messages.error(request, '兌換成功')
     return HttpResponseRedirect("/point_view/")
 
+def submit(request):
+    requests.post('https://33ea-61-63-97-78.jp.ngrok.io/SA/test.jsp', data = {
+        "objectId": "1",
+        "objectType": "1",
+        "objectUseable": "智慧你",
+        "objectOwner": 10,
+    })
+    return render(request, 'index.html', locals())
 
+#碳排增減    
 def changecb(request):
     san = request.session.get('session_id')
     user = member.objects.get(Memsanfan=san)
@@ -211,20 +245,27 @@ def member_view(request):
 
 def login_p(request):
     sanfan = request.POST.get('san', '')
-    password = request.POST.get('password', '')
-    m = member.objects.get(Memsanfan=sanfan)
-    if m.Memsanfan == sanfan and m.MemPW == password:
-        request.session['session_id'] = sanfan
-        print(request.session['session_id'])  # 設置session
-        s = Session.objects.all()
-        print(sanfan)
-        messages.error(request, '登入成功')
-        return HttpResponseRedirect("/index/")
-        # return render(request, '/index/', locals())
-    else:
+    password = request.POST.get('password', '') 
+    m = member.objects.filter( Memsanfan = sanfan )
+    if m:
+        b = member.objects.get( Memsanfan = sanfan )
+        if b.Memsanfan == sanfan and b.MemPW == password:
+            request.session['session_id'] = sanfan
+            print(request.session['session_id']) # 設置session
+            s = Session.objects.all()
+            print(sanfan)
+            messages.error(request, '登入成功')
+            return HttpResponseRedirect("/index/")
+        #return render(request, '/index/', locals())
+        else :
+            request.session['session_id'] = 0
+            messages.error(request, '密碼錯誤')  
+            return HttpResponseRedirect("/login/")
+            #return render(request, '/login/', locals())
+    else :
         request.session['session_id'] = 0
-        messages.error(request, '帳號或密碼錯誤')
-        return render(request, '/login/', locals())
+        messages.error(request, '查無帳號資訊')  
+        return HttpResponseRedirect("/login/")
 
 
 def signup_view(request):

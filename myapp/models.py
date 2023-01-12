@@ -43,6 +43,7 @@ class point(models.Model):
     Memsanfan = models.CharField('會員身分證', max_length=100, null=False)
     PChange = models.CharField('增減', max_length=100, null=False)
     PPS = models.CharField('說明', max_length=100, null=False)
+    PCarbon = models.IntegerField('碳排量')
     PPoint = models.IntegerField('點數', null=False)
     PCmp = models.CharField('合作廠商', max_length=100, null=False)
     PDATE = models.DateTimeField()  # 增減時間
@@ -54,6 +55,7 @@ class Exchanged(models.Model):
     Ename = models.CharField('服務', max_length=100, null=False)
     EPS = models.CharField('說明', max_length=100)
     EPoint = models.IntegerField('點數', null=False)
+    ECarbon = models.IntegerField('碳排量')
     ECmp = models.CharField('合作廠商', max_length=100, null=False)
     EDDline = models.CharField('剩餘期限', max_length=100, null=False)
     EDATE = models.DateTimeField()  # 兌換時間
@@ -65,6 +67,7 @@ class Service(models.Model):
     SKind = models.CharField('服務分類', max_length=100, null=False)
     SPS = models.CharField('說明', max_length=100, null=False)
     SPoint = models.IntegerField('點數', null=False)
+    SCarbon = models.IntegerField('碳排量')
     SDDline = models.CharField('使用期限', max_length=100, null=False)
     SCmp = models.CharField('合作廠商', max_length=100, null=False)
 
