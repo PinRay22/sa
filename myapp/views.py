@@ -112,6 +112,8 @@ def login_view(request):
 def activity_view(request):
     return render(request, 'activity.html', locals())
 
+def in_progress_view(request):
+    return render(request, 'in_progress.html', locals())
 
 def vmem_photo(request):
     return render(request, 'mem_photo.html', locals())
@@ -199,7 +201,7 @@ def exchange(request):
     return HttpResponseRedirect("/point_view/")
 
 def submit(request):
-    requests.post('https://33ea-61-63-97-78.jp.ngrok.io/SA/test.jsp', data = {
+    request.post('https://33ea-61-63-97-78.jp.ngrok.io/SA/test.jsp', data = {
         "objectId": "1",
         "objectType": "1",
         "objectUseable": "智慧你",
