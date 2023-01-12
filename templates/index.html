@@ -297,19 +297,22 @@
                 <h4 id="home_mistitle">每日任務</h4>
                 <hr class="home_mishr">
                 
-                <a class="btn home_mission" href="/activity/">
-                <!--<a class="btn home_mission" style="background-color:#c98e8e;" href="/activity/">--><!--完成任務後使用-->
-                    <h6 id="mis_word">前往挑戰</h6>
-                    <h5>1. 每日任務一</h5>
+                
+                {% for ck in cks %}
+                {% if ck.VCheck %}
+                <a class="btn home_mission" style="background-color:#c98e8e;" href="">
+                    <!--完成任務後使用-->
+                
+                    <h6 id="mis_word">挑戰完成</h6>
+                    <h5>{{forloop.counter}}.{{ck.Vname}}</h5>
                 </a>
+                {% else %}
                 <a class="btn home_mission" href="/activity/">
                     <h6 id="mis_word">前往挑戰</h6>
-                    <h5>2. 每日任務二</h5>
+                    <h5>{{forloop.counter}}.{{ck.Vname}}</h5>
                 </a>
-                <a class="btn home_mission" href="/activity/">
-                    <h6 id="mis_word">前往挑戰</h6>
-                    <h5>3. 每日任務三</h5>
-                </a>
+                {% endif%}
+                {% endfor %}
             </div>
         </div>
     </div>

@@ -240,12 +240,16 @@
         </a>
         <div class="mid_body" style="margin-bottom: 30px; margin-top:40px;">
             <p class="check_exc_t">每日任務</p>
-            <form action="/in_progress/" method="">
+            {% for item in items %}
+            <form action="/in_progress/" method = "POST" >{% csrf_token %}
                 <div class="missions">
-                <p class="mis_name">每日任務一</p>
+                {{forloop.counter}}.
+                <input type = "text" class="v_title" name = 'vname' value = '{{item.Vname}}'>
+                {% comment %} <p class="mis_name" name = "vname" >{{item.Vname}}</p> {% endcomment %}
                 <input type="submit" class="misbtn btn btn-primary" id="membtn" value="開始任務">
                 </div>
             </form>
+            {% endfor %}
         </div>
     </div>
     <!--底部-->

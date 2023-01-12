@@ -241,8 +241,9 @@
         <div class="mid_body" style="margin-bottom: 30px; margin-top:40px;">
             <p class="check_exc_t">任務進行中...</p>
             <div style="text-align:center;">
-                <form action="" method="">
-                    <p class="mis_ing">進行中任務：每日任務一</p>
+                <form action="/check/" method = "POST" >{% csrf_token %}
+                    <p class="mis_ing">進行中任務：</p>
+                    <input type = "text" class="v_title" name = 'vname' value = '{{name}}'>
                     <div class="rotateimg">
                         <img src="../static/img/loading.png">
                     </div>

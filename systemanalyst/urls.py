@@ -45,5 +45,6 @@ urlpatterns = [
     path('login/', views.login_view),
     path('activity/',views.activity_view),
     path('in_progress/', views.in_progress_view),
+    path('check/', views.check_mission ),
     path("news/", include("news.urls")),
 ]
