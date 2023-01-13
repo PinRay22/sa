@@ -156,6 +156,9 @@ def check_mission(request):
 def vmem_photo(request):
     return render(request, 'mem_photo.html', locals())
 
+def lc_life_view(request):
+    return render(request, 'lc_life.html', locals())
+    
 def rank(request):
     san = request.session.get('session_id')
     user = member.objects.get(Memsanfan=san)
