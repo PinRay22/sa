@@ -13,6 +13,8 @@ from jinja2 import Environment, FileSystemLoader
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import smtplib
+import requests
+
 
 #timmmme
 now = timezone.now
@@ -198,14 +200,28 @@ def activity_view(request):
 #開始任務
 def in_progress_view(request):
     name = request.POST.get('vname', '')
-    items = Mission.objects.filter( Vname = name )
+    items = Mission.objects.get( Vname = name )
+    car = items.VCarbon
     return render(request, 'in_progress.html', locals())
 
 #確認任務
+
+
 def check_mission(request):
     name = request.POST.get('vname', '')
-    Mission.objects.filter( Vname = name ).update( VCheck = True )
-    return HttpResponseRedirect("/index/")
+    san = request.session.get('session_id')
+    if san != 0 and san is not None:
+        item = Mission.objects.get(Vname=name)
+        cd = item.VCarbon
+        user = member.objects.get(Memsanfan=san)
+        mcd = user.MCarbon
+        member.objects.filter(Memsanfan=san).update(MCarbon=(mcd - cd))
+        Mission.objects.filter(Vname=name).update(VCheck=True)
+        messages.error(request, '太棒了!一起為地球努力吧')
+        return HttpResponseRedirect("/index/")
+    else:
+        messages.error(request, '您尚未登入，請先登入')
+        return HttpResponseRedirect("/login/")
 
 def vmem_photo(request):
     return render(request, 'mem_photo.html', locals())
@@ -413,6 +429,24 @@ def alt_member(request):
         return redirect('/alt_view/')
 
 
+def gogo(request):
+    san = request.session.get('session_id')
+    user = member.objects.get(Memsanfan=san)
+    a = user.Memsanfan
+    b = user.MemPW
+    c = user.MemAddr
+    d = user.MemPh
+    e = user.MemName
+    requests.post('https://f120-61-63-97-78.jp.ngrok.io/SA/sign_up.jsp', data={
+        "email": a,
+        "password": b,
+        "comfirm_password": b,
+        "address": c,
+        "phonenumber": d,
+        "fullname": e,
+    })
+    return HttpResponseRedirect("https://f120-61-63-97-78.jp.ngrok.io/SA/index.jsp")
+
 def signup(request):
     if request.method == 'POST':
         form = request.POST
@@ -472,3 +506,4 @@ def signup(request):
         return redirect('/index/')  # 要改  /index#loginModal/沒屁用
     else:
         return render(request, '/index/')
+
