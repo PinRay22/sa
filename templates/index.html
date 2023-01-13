@@ -325,14 +325,18 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    
                     <form>
+                        {% for odr in odrs %}
                         <div>
-                            <p>日期：2022/12/31</p>
-                            <p>碳排增减：+100</p>
-                            <p>説明：使用智慧洗</p>
+                            <p>日期：{{odr.SDATE}}</p>
+                            <p>碳排增减：+{{odr.SPoint}}</p>
+                            <p>説明：{{odr.Serv}}</p>
                         </div>
                         <hr>
+                        {% endfor %}
                     </form>
+                    
                 </div>
             </div>
         </div>

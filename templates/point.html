@@ -235,7 +235,7 @@
                 <p class="pnt_inf_n">{{item.MemPoint}}</p>
                 <div class="break_r"></div>
                 <p class="pnt_inf_t">即將到期</p>
-                <p class="pnt_inf_n">40</p>
+                <p class="pnt_inf_n">100</p>
                 <p style="font-size: 8;">~2023/01/31</p>
             </div>
             <div class="btn_wrap">
@@ -263,6 +263,22 @@
                         <div class="collapse clps" id="collapsefood">
                             <div class="card card-body" style="padding:5px 0;">
                                 {% for ser in ser1 %}
+                                {% if item.Memrank == 1 %}
+                                <form action="/pe_view/" method = "POST" >{% csrf_token %}
+                                    <div class="voucher">
+                                        <div>
+                                            <input type = "text" class="v_title" name = 'name' value = '{{ser.Sname}}'>
+                                            <p class="v_price">所需點數:{{tempoint1}}</p>
+                                            <p class="v_price">碳排:{{ser.SCarbon}}</p>
+                                            <p class=" v_dtl">使用期限:兑换後{{ser.SDDline}}日内</p>
+                                        </div>
+                                        <div class="wrap_pexc">
+                                            <input type="submit" class="btn btn-primary pnt_exchange"
+                                                value="兑换"></input>
+                                        </div>
+                                    </div>
+                                </form>
+                                {% else %}
                                 <form action="/pe_view/" method = "POST" >{% csrf_token %}
                                     <div class="voucher">
                                         <div>
@@ -277,6 +293,7 @@
                                         </div>
                                     </div>
                                 </form>
+                                {% endif %}
                                 {% endfor %}
                             </div>
                         </div>
@@ -288,6 +305,23 @@
                         <div class="collapse clps" id="collapseclo">
                             <div class="card card-body" style="padding:5px 0;">
                                 {% for ser in ser2 %}
+                                {% if item.Memrank == 1 %}
+                                <form action="/pe_view/" method = "POST" >{% csrf_token %}
+                                    <div class="voucher">
+                                        <div>
+                                            <!--<input type="text" class="v_title" value="" readonly>-->
+                                            <input type = "text" class="v_title" name = 'name' value = '{{ser.Sname}}'>
+                                            <p class="v_price">所需點數:{{tempoint2}}</p>
+                                            <p class="v_price">碳排:{{ser.SCarbon}}</p>
+                                            <p class=" v_dtl">使用期限:兑换後{{ser.SDDline}}日内</p>
+                                        </div>
+                                        <div class="wrap_pexc">
+                                            <input type="submit" class="btn btn-primary pnt_exchange"
+                                                value="兑换"></input>
+                                        </div>
+                                    </div>
+                                </form>
+                                {% else %}
                                 <form action="/pe_view/" method = "POST" >{% csrf_token %}
                                     <div class="voucher">
                                         <div>
@@ -303,6 +337,7 @@
                                         </div>
                                     </div>
                                 </form>
+                                {% endif %}
                                 {% endfor %}
                             </div>
                         </div>
@@ -314,6 +349,23 @@
                         <div class="collapse clps" id="collapselive">
                             <div class="card card-body" style="padding:5px 0;">
                                 {% for ser in ser3 %}
+                                {% if item.Memrank == 1 %}
+                                <form action="/pe_view/" method = "POST" >{% csrf_token %}
+                                    <div class="voucher">
+                                        <div>
+                                            <!--<input type="text" class="v_title" value="" readonly>-->
+                                            <input type = "text" class="v_title" name = 'name' value = '{{ser.Sname}}'>
+                                            <p class="v_price">所需點數:{{tempoint3}}</p>
+                                            <p class="v_price">碳排:{{ser.SCarbon}}</p>
+                                            <p class=" v_dtl">使用期限:兑换後{{ser.SDDline}}日内</p>
+                                        </div>
+                                        <div class="wrap_pexc">
+                                            <input type="submit" class="btn btn-primary pnt_exchange"
+                                                value="兑换"></input>
+                                        </div>
+                                    </div>
+                                </form>
+                                {% else %}
                                 <form action="/pe_view/" method = "POST" >{% csrf_token %}
                                     <div class="voucher">
                                         <div>
@@ -329,6 +381,7 @@
                                         </div>
                                     </div>
                                 </form>
+                                {% endif %}
                                 {% endfor %}
                             </div>
                         </div>
@@ -340,6 +393,23 @@
                         <div class="collapse clps" id="collapsetrans">
                             <div class="card card-body" style="padding:5px 0;">
                                 {% for ser in ser4 %}
+                                {% if item.Memrank == 1 %}
+                                <form action="/pe_view/" method = "POST" >{% csrf_token %}
+                                    <div class="voucher">
+                                        <div>
+                                            <!--<input type="text" class="v_title" value="" readonly>-->
+                                            <input type = "text" class="v_title" name = 'name' value = '{{ser.Sname}}'>
+                                            <p class="v_price">所需點數:{{tempoint4}}</p>
+                                            <p class="v_price">碳排:{{ser.SCarbon}}</p>
+                                            <p class=" v_dtl">使用期限:兑换後{{ser.SDDline}}日内</p>
+                                        </div>
+                                        <div class="wrap_pexc">
+                                            <input type="submit" class="btn btn-primary pnt_exchange"
+                                                value="兑换"></input>
+                                        </div>
+                                    </div>
+                                </form>
+                                {% else %}
                                 <form action="/pe_view/" method = "POST" >{% csrf_token %}
                                     <div class="voucher">
                                         <div>
@@ -355,6 +425,7 @@
                                         </div>
                                     </div>
                                 </form>
+                                {% endif %}
                                 {% endfor %}
                             </div>
                         </div>
@@ -366,6 +437,23 @@
                         <div class="collapse clps" id="collapseedu">
                             <div class="card card-body" style="padding:5px 0;">
                                 {% for ser in ser5 %}
+                                {% if item.Memrank == 1 %}
+                                <form action="/pe_view/" method = "POST" >{% csrf_token %}
+                                    <div class="voucher">
+                                        <div>
+                                            <!--<input type="text" class="v_title" value="" readonly>-->
+                                            <input type = "text" class="v_title" name = 'name' value = '{{ser.Sname}}'>
+                                            <p class="v_price">所需點數:{{tempoint5}}</p>
+                                            <p class="v_price">所需碳排:{{ser.SCarbon}}</p>
+                                            <p class=" v_dtl">使用期限:兑换後{{ser.SDDline}}日内</p>
+                                        </div>
+                                        <div class="wrap_pexc">
+                                            <input type="submit" class="btn btn-primary pnt_exchange"
+                                                value="兑换"></input>
+                                        </div>
+                                    </div>
+                                </form>
+                                {% else %}
                                 <form action="/pe_view/" method = "POST" >{% csrf_token %}
                                     <div class="voucher">
                                         <div>
@@ -381,6 +469,7 @@
                                         </div>
                                     </div>
                                 </form>
+                                {% endif %}
                                 {% endfor %}
                             </div>
                         </div>

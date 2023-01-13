@@ -20,12 +20,15 @@
 
 <body>
     <div style="width:100%;text-align:center;">
+        <p style="text-align:center; font-size:30px; margin:20px auto;">揪愛低碳生活</p>
+        {% for er in eer %}
         <form>
             <div>
-                <p style="text-align:center; font-size:30px; margin:20px auto;">揪愛低碳生活</p>
-                <input type="submit" class="btn btn-primary" value="淨海/淨灘/淨街" style="margin:10px auto;">
+                
+                <input type="submit" class="btn btn-primary" value="{{er.Vname}}" style="margin:10px auto;">
             </div>
         </form>
+        {% endfor %}
     </div>
 </body>
 
