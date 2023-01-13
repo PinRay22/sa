@@ -51,6 +51,8 @@ def insert(request):
 def start(request):
     return render(request, 'before_login.html', locals())
 
+def indexf_en_view(request):
+    return render(request, 'before_login_en.html', locals())
 
 def pe_view(request):
     sname = request.POST.get('name', '')
@@ -165,6 +167,15 @@ def index(request):
     odrs = order.objects.filter(Memsanfan=san)
     return render(request, 'index.html', locals())
 
+
+def index_en(request):
+    san = request.session.get('session_id')
+    print(san)
+    items = Volunteer.objects.all()
+    user = member.objects.get(Memsanfan=san)
+    cks = Volunteer.objects.all()
+
+    return render(request, 'index_en.html', locals())
 
 def login_view(request):
     return render(request, 'login.html', locals())
