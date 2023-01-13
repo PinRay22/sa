@@ -1,15 +1,24 @@
 # news/viewsets.py
 from rest_framework import viewsets
 from rest_framework.permissions import AllowAny
-from .models import Article, Reporter
-from .serializers import ArticleSerializer, ReporterSerializer
+from .serializers import orderSerializer
+from myapp.models import order
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 
-class ArticleViewSet(viewsets.ModelViewSet):
-  queryset = Article.objects.all()
-  serializer_class = ArticleSerializer
+def back(self):
+    return HttpResponseRedirect("https://f120-61-63-97-78.jp.ngrok.io/SA/index.jsp")
+
+class orderViewSet(viewsets.ModelViewSet):
+  queryset = order.objects.all()
+  serializer_class = orderSerializer
   permission_classes = (AllowAny,)
 
-class ReporterViewSet(viewsets.ModelViewSet):
-  queryset = Reporter.objects.all()
-  serializer_class = ReporterSerializer
+  def back(self):
+    return HttpResponseRedirect("https://f120-61-63-97-78.jp.ngrok.io/SA/index.jsp")
+
+
+class testViewSet(viewsets.ModelViewSet):
+  queryset = order.objects.all()
+  serializer_class = orderSerializer
   permission_classes = (AllowAny,)
+

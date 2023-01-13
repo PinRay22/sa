@@ -1,8 +1,7 @@
 # news/urls.py
-from news.views import ArticleViewSet, ReporterViewSet
+from news.views import orderViewSet
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register(r'articles', ArticleViewSet, basename='article')
-router.register(r'reporter', ReporterViewSet, basename='reporter')
+router.register(r'order', orderViewSet, basename='order')
 urlpatterns = router.urls
