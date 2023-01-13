@@ -234,7 +234,7 @@
         <div class="inner"></div>
     </div>
     <div class="main_body" style="position: absolute; top:50px;">
-        <div class="mid_body">
+        <div class="mid_body" style="margin-top:60px;">
             
             <form action="/exchange/"method = "POST" >{% csrf_token %}
                 <p class="check_exc_t">請確認兑换服務内容</p>
@@ -242,6 +242,12 @@
                 <input type = "text" class="v_title" name = 'SerName' value = '{{ser.Sname}}' readonly style="background:#c5b5b5">
                 <p class="v_price">所需點數:{{ser.SPoint}}</p>
                 <p class=" v_dtl">使用期限:兑换後{{ser.SDDline}}日内</p>
+                <div class="checkcir">
+                    <svg width="200" height="200">
+                        <circle fill="none" stroke="#b07577" stroke-width="20" cx="100" cy="100" r="90" class="gocircle" stroke-linecap="round" transform="rotate(-90 100 100)"/>
+                        <polyline fill="none" stroke="#b07577" stroke-width="24" points="44,107 86,142 152,69" stroke-linecap="round" stroke-linejoin="round" class="tick"/>
+                    </svg>
+                </div>
                 <div class="d-grid gap-2">
                     <input type="submit" value="確認兑换" class="btn btn-primary" id="membtn"></input>
                     <a href="/point_view/" role="button" class="btn btn-primary" id="membtn">取消兑换</a>
