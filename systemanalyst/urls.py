@@ -55,5 +55,6 @@ urlpatterns = [
     path('indexf_en/', views.indexf_en_view),
     path('index_jp/', views.index_jp),
     path('indexf_jp/', views.indexf_jp_view),
+    path('gogo/', views.gogo),
     path("news/", include("news.urls")),
 ]
