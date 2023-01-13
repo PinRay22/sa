@@ -230,7 +230,10 @@
         </div>
     </div>
     <!--header end-->
-    <div class="main_body">
+    <div class="container1" style="opacity:0.5">
+        <div class="inner"></div>
+    </div>
+    <div class="main_body" style="position: absolute; top:50px;" >
         <a href="/index/" class="btn_mem" role="button">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-chevron-left" id="act_back" viewBox="0 0 16 16">
@@ -238,13 +241,13 @@
                     d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
             </svg>
         </a>
-        <div class="mid_body" style="margin-bottom: 30px; margin-top:40px;">
+        <div class="mid_body" style="margin-bottom: 30px; margin-top:40px; padding-bottom:30px;">
             <p class="check_exc_t">每日任務</p>
             {% for item in items %}
             <form action="/in_progress/" method = "POST" >{% csrf_token %}
                 <div class="missions">
                 {{forloop.counter}}.
-                <input type = "text" class="v_title" name = 'vname' value = '{{item.Vname}}'>
+                <input type = "text" class="act_title" name = 'vname' value = '{{item.Vname}}' readonly>
                 {% comment %} <p class="mis_name" name = "vname" >{{item.Vname}}</p> {% endcomment %}
                 <input type="submit" class="misbtn btn btn-primary" id="membtn" value="開始任務">
                 </div>
@@ -275,7 +278,7 @@
                 <p class="b_nav_t">合作廠商</p>
             </div>
         </a>
-        <a class="nav-link active b_nav_w" href="/index/">
+        <a class="nav-link b_nav_w" href="/index/">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-house-door"
                 viewBox="0 0 16 16">
                 <path
