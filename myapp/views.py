@@ -113,7 +113,9 @@ def cmphoto(request):
     messages.error(request, '完成頭貼更換')
     return HttpResponseRedirect("/vmember/")
 
-
+def honor_view(request):
+    return render(request, 'honor.html', locals())
+    
 def rede(request):
     cmp = request.POST.get('Cname', '')
     user = order.objects.get(OCmp=cmp)
