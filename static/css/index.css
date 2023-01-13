@@ -229,7 +229,7 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
     border-radius: 50%;
 }
 [type=radio]:checked + img{
-    outline:10px solid #b07577
+    outline:10px solid #b07577;
 }
 .check_exc_t{
     text-align: center;
@@ -245,8 +245,9 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
 }
 .comp_btn{
     width: 45%;
-    height: 45%;
+    height: 160px;
     border-radius: 10%;
+    background-color: #d4d2d2;
 }
 .comp_btn>img{
     max-width: 100%;
@@ -378,6 +379,13 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
     margin-top: 25px;
     margin-left: 10px;
     margin-bottom: 15px;
+}
+.selfrank{
+    width: 90%;
+    height: 110px;
+    background-color: #c98e8e;
+    border-radius: 10px;
+    margin: 0 auto;
 }
 /*點數*/
 .pnt_inf{
@@ -512,6 +520,18 @@ body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 {
 }
 .check_exc_t{
     font-size: 30px;
+}
+.wrapnct{
+    width: 50%;
+    border-radius: 10px;
+    background-color: #c9ad8e;
+    margin:15px auto;
+    text-align: center;
+    padding: 5px;
+}
+.now_county{
+    font-size: 24px;
+    margin:0;
 }
 /*消費紀錄*/
 #spendwd{
