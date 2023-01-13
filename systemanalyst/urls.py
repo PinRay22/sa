@@ -47,5 +47,6 @@ urlpatterns = [
     path('in_progress/', views.in_progress_view),
     path('check/', views.check_mission ),
     path('honor_view/',views.honor_view),
+    path('lc_life/', views.lc_life_view),
     path("news/", include("news.urls")),
 ]
