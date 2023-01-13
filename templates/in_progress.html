@@ -244,6 +244,8 @@
                 <form action="/check/" method = "POST" >{% csrf_token %}
                     <p class="mis_ing">進行中任務：</p>
                     <input type = "text" class="act_title" style="background-color:#c5b5b5; text-align:center;" name = 'vname' value = '{{name}}' readonly>
+                    <p class="mis_ing">將扣除碳排量:{{ car }}</p>
+                    
                     <div class="rotateimg">
                         <img src="../static/img/loading.png">
                     </div>
