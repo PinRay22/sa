@@ -23,8 +23,8 @@ now = datetime.datetime.now()
 content = MIMEMultipart()  #建立MIMEMultipart物件
 content["subject"] = "您的碳制郎安全密碼驗證"  #郵件標題
 content["from"] = "pydemo123@gmail.com"  #寄件者
-content["to"] = "hatori1129ckmia@gmail.com" #收件者
-content.attach(MIMEText("請使用密碼以驗證簽署者身份\n\n   您必須在十分鐘內輸入以下安全密碼，\n   以簽署由碳制郎股份有限公司發送給您的。\n\t\t您的驗證碼： 852 416 \n   你沒有提出申請嗎？\n   若你並未提出此申請，請忽略此信。若重複收到此信，請注意帳號安全或聯絡客服人員。\n   有任何疑問請聯絡客服，當然也歡迎你註冊專屬自己的碳制郎帳號！\n" ))  #郵件內容
+content["to"] = "pinray544513@gmail.com" #收件者
+content.attach(MIMEText("請使用密碼以驗證簽署者身份\n\n   您必須在十分鐘內輸入以下安全密碼，\n   以簽署由碳制郎股份有限公司發送給您的。\n\t\t您的驗證碼： c1qjm2fl5oc63gvk \n   你沒有提出申請嗎？\n   若你並未提出此申請，請忽略此信。若重複收到此信，請注意帳號安全或聯絡客服人員。\n   有任何疑問請聯絡客服，當然也歡迎你註冊專屬自己的碳制郎帳號！\n" ))  #郵件內容
 
 def send_email():
     with smtplib.SMTP(host="smtp.gmail.com", port="587") as smtp:  # 設定SMTP伺服器
@@ -62,6 +62,10 @@ def use_view(request):
     eer = Exchanged.objects.get( Ename = sname )
     return render(request, 'point_use.html', locals())
 
+def lc_view(request):
+    eer = Volunteer.objects.all()
+    return render(request, 'lc_life.html', locals())
+
 def acti_p(request):
     san = request.session.get('session_id')
     if san != 0 and san is not None:
@@ -82,11 +86,21 @@ def point_view(request):
     if san != 0 and san is not None:
         item = member.objects.get(Memsanfan=san)
         users = point.objects.filter(Memsanfan=san)
-        ser1 = Service.objects.filter(SKind=1)
-        ser2 = Service.objects.filter(SKind=2)
-        ser3 = Service.objects.filter(SKind=3)
-        ser4 = Service.objects.filter(SKind=4)
-        ser5 = Service.objects.filter(SKind=5)
+        ser1 = Service.objects.filter( SKind = 1 )
+        se1 = Service.objects.get( SKind = 1 )
+        tempoint1 = se1.SPoint * 0.9
+        ser2 = Service.objects.filter( SKind = 2 )
+        se2 = Service.objects.get( SKind = 2 )
+        tempoint2 = se2.SPoint * 0.9
+        ser3 = Service.objects.filter( SKind = 3 )
+        se3 = Service.objects.get(  SKind = 3 )
+        tempoint3 = se3.SPoint * 0.9
+        ser4 = Service.objects.filter( SKind = 4 )
+        se4 = Service.objects.get( SKind = 4 )
+        tempoint4 = se4.SPoint * 0.9
+        ser5 = Service.objects.filter( SKind = 5 )
+        se5 = Service.objects.get( SKind = 5 )
+        tempoint5 = se5.SPoint * 0.9
         exs = Exchanged.objects.filter(Memsanfan=san)
         return render(request, 'point.html', locals())
     else:
@@ -113,9 +127,29 @@ def cmphoto(request):
     messages.error(request, '完成頭貼更換')
     return HttpResponseRedirect("/vmember/")
 
+def honor_p(request):
+    san = request.session.get('session_id')
+    RPic = request.POST.get('picnum', '')
+    member.objects.filter(Memsanfan=san).update( MemRPic = RPic )
+    messages.error(request, '完成勳章更換')
+    return HttpResponseRedirect("/vmember/")
+
 def honor_view(request):
     return render(request, 'honor.html', locals())
-    
+
+def ck_sighup(request):
+    messages.error(request, '請確認驗證碼')
+    return render(request, 'check.html', locals())
+
+def ck_p(request):
+    passw = request.POST.get('yen', '')
+    if passw == "c1qjm2fl5oc63gvk" :
+        messages.error(request, '註冊成功')
+        return HttpResponseRedirect("/login/")
+    else :
+        messages.error(request, '驗證碼錯誤')
+        return HttpResponseRedirect("/ck_sighup/")
+
 def rede(request):
     cmp = request.POST.get('Cname', '')
     user = order.objects.get(OCmp=cmp)
@@ -127,8 +161,8 @@ def index(request):
     print(san)
     items = Volunteer.objects.all()
     user = member.objects.get(Memsanfan=san)
-    cks = Volunteer.objects.all()
-    
+    cks = Mission.objects.all()
+    odrs = order.objects.filter(Memsanfan=san)
     return render(request, 'index.html', locals())
 
 
@@ -137,28 +171,24 @@ def login_view(request):
 
 #任務畫面
 def activity_view(request):
-    items = Volunteer.objects.all()
+    items = Mission.objects.all()
     return render(request, 'activity.html', locals())
 
 #開始任務
 def in_progress_view(request):
     name = request.POST.get('vname', '')
-    items = Volunteer.objects.filter( Vname = name )
+    items = Mission.objects.filter( Vname = name )
     return render(request, 'in_progress.html', locals())
 
 #確認任務
 def check_mission(request):
     name = request.POST.get('vname', '')
-    Volunteer.objects.filter( Vname = name ).update( VCheck = True )
-    print("adadadadadadadadad")
+    Mission.objects.filter( Vname = name ).update( VCheck = True )
     return HttpResponseRedirect("/index/")
 
 def vmem_photo(request):
     return render(request, 'mem_photo.html', locals())
 
-def lc_life_view(request):
-    return render(request, 'lc_life.html', locals())
-    
 def rank(request):
     san = request.session.get('session_id')
     user = member.objects.get(Memsanfan=san)
@@ -280,6 +310,7 @@ def member_view(request):
         Mem_point = user.MemPoint
         Mem_pic = user.MemPic
         Mem_CB = user.MCarbon
+        Mem_RP = user.MemRPic
         return render(request, 'vmember.html', locals())
     else:
         messages.error(request, '您尚未登入，請先登入')
@@ -372,16 +403,20 @@ def signup(request):
         tMemCity = form['city']
         tMemAddr = form['address']
         tMemmail = form['mail']
+        global maill
+        maill = tMemmail
         tMemxin = form['xin']
         newmember = member(MemID=tMemID,
                            MemName=tMemName, MemPh=tMemPh,
                            MemPW=tMemPW, Memsanfan=tMemsanfan, MemCity=tMemCity,
                            MemAddr=tMemAddr, Memmail=tMemmail,
-                           Memxin=tMemxin, MCarbon=0, MemPoint=0, MemPic='../static/img/mem_pic1.jpg')
+                           Memxin=tMemxin, MCarbon=0, MemPoint=100, MemPic='../static/img/mem_pic1.jpg',
+                           Memrank = 0, MemRPic = '')
         newmember.save()
+        
         print("success")
-        messages.error(request, '註冊成功')
-        return HttpResponseRedirect("/login/")  # 要改  /index#loginModal/沒屁用
+        send_email()
+        return HttpResponseRedirect("/ck/")  # 要改  /index#loginModal/沒屁用
     else:
         messages.error(request, '註冊失敗')
         return HttpResponseRedirect('/signup_view/')

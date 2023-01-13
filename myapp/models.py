@@ -23,6 +23,8 @@ class member(models.Model):
     MCarbon = models.FloatField('碳排量', null=True)
     MemPoint = models.IntegerField('碳權點數', null=True)
     MemPic = models.CharField('頭貼', max_length=100, null=True)
+    Memrank = models.IntegerField('徽章')
+    MemRPic = models.CharField('徽章', max_length=100, null=True)
 
     def __str__(self) -> str:
         return self.MemID
@@ -77,6 +79,12 @@ class Volunteer(models.Model):
     Vname = models.CharField('服務', max_length=100, null=False)
     VCarbon = models.IntegerField('碳排', null=False)
     VCmp = models.CharField('合作廠商', max_length=100)
+    VCheck = models.BooleanField('完成確認')
+
+class Mission(models.Model):
+    VID = models.CharField('任務編號', max_length=1000)
+    Vname = models.CharField('任務', max_length=100, null=False)
+    VCarbon = models.IntegerField('碳排', null=False)
     VCheck = models.BooleanField('完成確認')
 
 
