@@ -19,7 +19,7 @@ class member(models.Model):
     MemCity = models.CharField('會員城市', max_length=100, null=False)
     MemAddr = models.CharField('會員地址', max_length=100, null=False)
     Memmail = models.CharField('會員電郵', max_length=100, null=False)
-    Memxin = models.CharField('會員信用卡號', max_length=100)
+    Memxin = models.CharField('會員信用卡號', max_length=100, null=True)
     MCarbon = models.FloatField('碳排量', null=True)
     MemPoint = models.IntegerField('碳權點數', null=True)
     MemPic = models.CharField('頭貼', max_length=100, null=True)
@@ -34,7 +34,7 @@ class order(models.Model):
     OID = models.CharField('訂單編號', max_length=1000, primary_key=True)
     Memsanfan = models.CharField('會員身分證', max_length=100, null=False)
     Serv = models.CharField('服務項目', max_length=100, null=False)
-    SCarbon = models.IntegerField('碳排量', null=False)
+    SCarbon = models.FloatField('碳排量', null=False)
     SPoint = models.IntegerField('消費點數', null=False)
     OCmp = models.CharField('合作廠商', max_length=100, null=False)
     SDATE = models.DateTimeField()  # 交易時間
@@ -45,7 +45,7 @@ class point(models.Model):
     Memsanfan = models.CharField('會員身分證', max_length=100, null=False)
     PChange = models.CharField('增減', max_length=100, null=False)
     PPS = models.CharField('說明', max_length=100, null=False)
-    PCarbon = models.IntegerField('碳排量')
+    PCarbon = models.FloatField('碳排量')
     PPoint = models.IntegerField('點數', null=False)
     PCmp = models.CharField('合作廠商', max_length=100, null=False)
     PDATE = models.DateTimeField()  # 增減時間
@@ -57,7 +57,7 @@ class Exchanged(models.Model):
     Ename = models.CharField('服務', max_length=100, null=False)
     EPS = models.CharField('說明', max_length=100)
     EPoint = models.IntegerField('點數', null=False)
-    ECarbon = models.IntegerField('碳排量')
+    ECarbon = models.FloatField('碳排量')
     ECmp = models.CharField('合作廠商', max_length=100, null=False)
     EDDline = models.CharField('剩餘期限', max_length=100, null=False)
     EDATE = models.DateTimeField()  # 兌換時間
@@ -69,7 +69,7 @@ class Service(models.Model):
     SKind = models.CharField('服務分類', max_length=100, null=False)
     SPS = models.CharField('說明', max_length=100, null=False)
     SPoint = models.IntegerField('點數', null=False)
-    SCarbon = models.IntegerField('碳排量')
+    SCarbon = models.FloatField('碳排量')
     SDDline = models.CharField('使用期限', max_length=100, null=False)
     SCmp = models.CharField('合作廠商', max_length=100, null=False)
 
@@ -77,14 +77,14 @@ class Service(models.Model):
 class Volunteer(models.Model):
     VID = models.CharField('服務編號', max_length=1000)
     Vname = models.CharField('服務', max_length=100, null=False)
-    VCarbon = models.IntegerField('碳排', null=False)
+    VCarbon = models.FloatField('碳排', null=False)
     VCmp = models.CharField('合作廠商', max_length=100)
     VCheck = models.BooleanField('完成確認')
 
 class Mission(models.Model):
     VID = models.CharField('任務編號', max_length=1000)
     Vname = models.CharField('任務', max_length=100, null=False)
-    VCarbon = models.IntegerField('碳排', null=False)
+    VCarbon = models.FloatField('碳排', null=False)
     VCheck = models.BooleanField('完成確認')
 
 

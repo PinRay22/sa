@@ -54,6 +54,9 @@ def start(request):
 def indexf_en_view(request):
     return render(request, 'before_login_en.html', locals())
 
+def indexf_jp_view(request):
+    return render(request, 'before_login_jp.html', locals())
+
 def pe_view(request):
     sname = request.POST.get('name', '')
     ser = Service.objects.get(Sname=sname)
@@ -71,7 +74,7 @@ def lc_view(request):
 def acti_p(request):
     san = request.session.get('session_id')
     if san != 0 and san is not None:
-        item = Volunteer.objects.get()
+        item = Mission.objects.get()
         cd = item.VCarbon
         user = member.objects.get(Memsanfan=san)
         mcd = user.MCarbon
@@ -161,21 +164,28 @@ def rede(request):
 def index(request):
     san = request.session.get('session_id')
     print(san)
-    items = Volunteer.objects.all()
+    items = Mission.objects.all()
     user = member.objects.get(Memsanfan=san)
     cks = Mission.objects.all()
     odrs = order.objects.filter(Memsanfan=san)
     return render(request, 'index.html', locals())
 
-
 def index_en(request):
     san = request.session.get('session_id')
     print(san)
-    items = Volunteer.objects.all()
+    items = Mission.objects.all()
     user = member.objects.get(Memsanfan=san)
-    cks = Volunteer.objects.all()
-
+    cks = Mission.objects.all()
     return render(request, 'index_en.html', locals())
+
+
+def index_jp(request):
+    san = request.session.get('session_id')
+    print(san)
+    items = Mission.objects.all()
+    user = member.objects.get(Memsanfan=san)
+    cks = Mission.objects.all()
+    return render(request, 'index_jp.html', locals())
 
 def login_view(request):
     return render(request, 'login.html', locals())
