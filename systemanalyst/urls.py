@@ -53,5 +53,7 @@ urlpatterns = [
     path('lc_view/',views.lc_view),
     path('index_en/', views.index_en),
     path('indexf_en/', views.indexf_en_view),
+    path('index_jp/', views.index_jp),
+    path('indexf_jp/', views.indexf_jp_view),
     path("news/", include("news.urls")),
 ]
