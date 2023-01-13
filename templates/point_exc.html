@@ -230,11 +230,14 @@
     </div>
     <!--header end-->
     <!--確認兌換服務-->
-    <div class="main_body">
+    <div class="container1">
+        <div class="inner"></div>
+    </div>
+    <div class="main_body" style="position: absolute; top:50px;">
         <div class="mid_body">
             
             <form action="/exchange/"method = "POST" >{% csrf_token %}
-                <p class="check_exc_t">請確認兑换服務内容：</p>
+                <p class="check_exc_t">請確認兑换服務内容</p>
                 
                 <input type = "text" class="v_title" name = 'SerName' value = '{{ser.Sname}}' readonly style="background:#c5b5b5">
                 <p class="v_price">所需點數:{{ser.SPoint}}</p>

@@ -242,6 +242,9 @@
                 <input type="search" placeholder="請輸入縣市" class="rankinput" name='inputCity' required>
                 <input class="btn btn-primary" type="submit" value="搜尋" id="placebt">
             </form>
+            <div class="wrapnct">
+                <p class="now_county">桃園市排行榜</p>
+            </div>
             <table class="table table-striped" id="placetable">
                 <thead>
                     <tr>
@@ -268,9 +271,8 @@
                     {% endfor %}
                     
                     <!--刪到這裡結束-->
-                    {% for data in mydata %}
-                    {% if data.MemName == Mem_name %}
-                    <form>
+                    
+                    <!--<form>
                         <tr class="table-primary">
                         <th scope="col" colspan="2" style="text-align: left;">您所在的地區:{{Mem_city}}</th>
                         <th scope="col"></th>
@@ -281,12 +283,21 @@
                         <td>{{Mem_name}}</td>
                         <td>{{Mem_CB}}</td>
                     </tr>
-                    </form>
-                    
-                    {% endif %} 
-                    {% endfor %}
+                    </form>-->
                 </tbody>
             </table>
+            {% for data in mydata %}
+            {% if data.MemName == Mem_name %}
+            <div style="width:100%;position: fixed; bottom: 125px;">
+                <div class="selfrank">
+                    <form>
+                        <img decoding="async" src="{{user.MemPic}}" class="img-circle"style="width: 90px; height: 90px; float:left; margin:10px 20px;">
+                        <p style="float:right; font-size:20px;text-align:center; margin:20px;">您的碳排量爲{{Mem_CB}}t<br>在{{Mem_city}}排行第{{forloop.counter}}</p>
+                    </form>
+                </div>
+            </div>
+            {% endif %} 
+            {% endfor %}
         </div>
     </div>
 

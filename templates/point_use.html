@@ -230,7 +230,10 @@
     </div>
     <!--header end-->
     <!--確認使用服務-->
-    <div class="main_body">
+    <div class="container1">
+        <div class="inner"></div>
+    </div>
+    <div class="main_body" style="position: absolute; top:50px;">
         <div class="mid_body">
             {% comment %} <form action="">
                 <p class="check_exc_t">請確認使用服務内容：</p>
@@ -241,7 +244,7 @@
                 </div>
             </form> {% endcomment %}
             <form action="/delete/"method = "POST" >{% csrf_token %}
-                <p class="check_exc_t">請確認兑换服務内容：</p>
+                <p class="check_exc_t">請確認兑换服務内容</p>
                 
                 <input type = "text" class="v_title" name = 'eerName' value = '{{eer.Ename}}' readonly style="background:#c5b5b5">
                 <p class="v_price">增加碳排量:{{eer.ECarbon}}</p>
